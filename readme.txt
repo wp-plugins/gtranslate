@@ -1,0 +1,43 @@
+=== GTranslate ===
+Contributors: edo888
+Author: Edvard Ananyan
+Donate link: http://edo.webmaster.am/gtranslate
+Tags: translate, translation, automatic translator, google translate, ajax translator, jquery translator
+Requires at least: 2.3
+Tested up to: 2.8
+Stable tag: 1.0.0
+
+Get translations with a single click between 52 languages (more than 98% of internet users) on your website!
+
+== Description ==
+
+This module uses Google power to translate your web page. With 52 available languages your site will be available to more than 98% of internet users.
+
+* Hides "Suggest better translation" pop-up
+* Hides Google top frame after translation
+* Mouse over effect
+* Flags combined in one file to load faster
+* Option to open translated page in new window
+* Option to translate the page on fly
+* Available styles Dropdown/Flags/flags with dropdown
+* Valid XHTML
+
+== Installation ==
+
+1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Place `<?php do_action('gtranslate_hook'); ?>` in your templates
+
+== Frequently Asked Questions ==
+
+= What is the quality of translation? =
+It's a Google translation, hence Google quality.
+
+== Screenshots ==
+
+1. Main View
+
+== Changelog ==
+
+= 1.0.0 =
+* Initial version for WordPress

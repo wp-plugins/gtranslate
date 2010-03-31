@@ -26,7 +26,6 @@ Author URI: http://edo.webmaster.am
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#error_reporting(E_ALL);
 add_action('widgets_init', array('GTranslate', 'register'));
 register_activation_hook(__FILE__, array('GTranslate', 'activate'));
 register_deactivation_hook(__FILE__, array('GTranslate', 'deactivate'));
@@ -65,7 +64,21 @@ class GTranslate extends WP_Widget {
 
         echo $args['before_widget'];
         echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
-        echo 'I am your widget'; // -- TODO -- display the language selector
+
+        // -- TODO -- display the language selector
+        echo 'BETA VERSION:';
+        ?>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                //includedLanguages: ''
+            }, 'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <?php
         echo $args['after_widget'];
     }
 
@@ -78,9 +91,9 @@ class GTranslate extends WP_Widget {
         add_options_page('GTranslator Options', 'GTranslate', 'administrator', 'gtranslate_options', array('GTranslate', 'options'));
     }
 
-    function options() {
+    function options() { // -- TODO -- display options
         echo '<div class="wrap">';
-        echo '<p>Here is where the form would go if I actually had options.</p>';
+        echo '<p>The configuration settings are not ready yet.</p>';
         echo '</div>';
     }
 }

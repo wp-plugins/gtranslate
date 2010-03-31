@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Donate link: http://edo.webmaster.am/gtranslate
 Tags: translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
-Tested up to: 2.8
+Tested up to: 2.9
 Stable tag: 1.0.0
 
 Get translations with a single click between 52 languages (more than 98% of internet users) on your website!
@@ -26,7 +26,11 @@ This module uses Google power to translate your web page. With 52 available lang
 
 1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place `<?php do_action('gtranslate_hook'); ?>` in your templates
+3. You can add a widget to your website.
+
+== Configuration ==
+
+To configure the widget go to Settings -> GTranslate
 
 == Frequently Asked Questions ==
 

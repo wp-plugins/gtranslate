@@ -134,7 +134,7 @@ class GTranslate extends WP_Widget {
             <fieldset>
                 <legend><h3><?php _e('General Configuration'); ?></h3></legend><br />
                 <fieldset class="options">
-                    <?php _e('Translation Method'); ?><br />
+                    <b><?php _e('Translation Method'); ?>:</b><br />
                     &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="google_default" checked /> <?php _e('Google Default'); ?></label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="ajax" /> <?php _e('On Fly (jQuery)'); ?></label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="redirect" /> <?php _e('Redirect'); ?></label>
@@ -149,14 +149,14 @@ class GTranslate extends WP_Widget {
             <fieldset>
                 <legend><h3><?php _e('Appearance Configuration'); ?></h3></legend><br />
                 <fieldset class="options">
-                    <?php _e('Look'); ?><br />
+                    <b><?php _e('Look'); ?>:</b><br />
                     &nbsp;&nbsp;<label><input type="radio" name="look" value="both" checked /> <?php _e('Both'); ?></label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="look" value="dropdown" /> <?php _e('Dropdown list'); ?></label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="look" value="flags" /> <?php _e('Flags'); ?></label>
                     <p><small>Select the look of the widget.</small></p>
                 </fieldset>
                 <fieldset class="options">
-                    <?php _e('Flag Size'); ?><br />
+                    <b><?php _e('Flag Size'); ?>:</b><br />
                     &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="16" checked /> 16</label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="24" /> 24</label><br />
                     &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="32" /> 32</label>
@@ -171,7 +171,7 @@ class GTranslate extends WP_Widget {
             <fieldset>
                 <legend><h3><?php _e('Language Configuration'); ?></h3></legend><br />
                 <fieldset class="options">
-                    <?php _e('Main Language'); ?><br />
+                    <b><?php _e('Main Language'); ?>:</b><br />
                     <select name="main_lang">
                         <option value=""><?php _e('Select Language'); ?></option>
                         <?php
@@ -181,6 +181,7 @@ class GTranslate extends WP_Widget {
                     </select>
                     <p><small>Your sites main language.</small></p>
                 </fieldset>
+                <b><?php _e('Available Languages'); ?>:</b><br />
                 <table class="editform">
                 <?php
                 foreach($lang_array as $lng => $lang) {
@@ -199,7 +200,7 @@ class GTranslate extends WP_Widget {
                 <p><small>Show selected language in the language list.</small></p>
             </fieldset>
 
-            <p class="submit"><input type="submit" name="save" value="<?php _e('Update options'); ?>" /></p>
+            <p class="submit"><input type="submit" class="button-primary" name="save" value="<?php _e('Save Changes'); ?>" /></p>
         </form>
         </div>
         <?php

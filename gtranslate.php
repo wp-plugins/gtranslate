@@ -61,6 +61,7 @@ class GTranslate extends WP_Widget {
 
     function widget($args) {
         $data = get_option('GTranslate');
+        self::load_defaults(& $data);
 
         echo $args['before_widget'];
         echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
@@ -97,11 +98,11 @@ class GTranslate extends WP_Widget {
         <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: '<?php echo get_option('main_lang'); ?>',
+                pageLanguage: '<?php echo $data['main_lang']; ?>',
                 includedLanguages: '<?php
                 foreach($lang_array as $lang => $lang_name) {
                     $show_this = 'show_'.str_replace('-', '', $lang);
-                    if(get_option($show_this))
+                    if($data[$show_this])
                         echo $lang.',';
                 }
                 ?>'
@@ -124,11 +125,19 @@ class GTranslate extends WP_Widget {
     }
 
     function options() { // -- TODO -- display options
+        $data = get_option('GTranslate');
+        self::load_defaults(& $data);
+
         $lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish');
         asort($lang_array);
         ?>
         <div class="wrap">
         <h2>GTranslate</h2>
+        <?php
+        if($_POST['save']) {
+            self::control_options();
+        }
+        ?>
         <p style="color:red;">The configuration settings are not ready yet.</p>
         <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
             <fieldset>
@@ -204,5 +213,18 @@ class GTranslate extends WP_Widget {
         </form>
         </div>
         <?php
+    }
+
+    function control_options() {
+        $data = get_option('GTranslate');
+
+        // -- TODO -- Make changes to $data
+
+        echo '<p style="color:red;">Changes Saved</p>';
+        update_option('GTranslate', $data);
+    }
+
+    function load_defaults(& $data) {
+        // -- TODO -- define defaults
     }
 }

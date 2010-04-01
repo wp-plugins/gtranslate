@@ -123,10 +123,12 @@ class GTranslate extends WP_Widget {
     }
 
     function options() { // -- TODO -- display options
-        echo '<div class="wrap">';
-        echo '<h2>GTranslate</h2>';
-        echo '<p>The configuration settings are not ready yet.</p>';
+        $lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish');
+        asort($lang_array);
         ?>
+        <div class="wrap">
+        <h2>GTranslate</h2>
+        <p style="color:red;">The configuration settings are not ready yet.</p>
         <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
             <fieldset>
                 <legend><h3><?php _e('General Configuration'); ?></h3></legend><br />
@@ -169,13 +171,32 @@ class GTranslate extends WP_Widget {
                 <legend><h3><?php _e('Language Configuration'); ?></h3></legend><br />
                 <fieldset class="options">
                     <?php _e('Main Language'); ?><br />
+                    <select name="main_lang">
+                        <option value=""><?php _e('Select Language'); ?></option>
+                        <?php
+                            foreach($lang_array as $lng => $lang)
+                                echo '<option value="'.$lng.'"'.(get_option('main_lang') == $lng ? ' selected' : '').'>'.$lang.'</option>';
+                        ?>
+                    </select>
                     <p><small>Your sites main language.</small></p>
                 </fieldset>
+                <?php
+                foreach($lang_array as $lng => $lang) {
+                    echo '<fieldset class="options">';
+                    _e('Show '.$lang);
+                    echo '<br />';
+                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="1" checked /> Yes</label><br />';
+                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="0" /> No</label><br />';
+                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="2" /> As a flag</label><br />';
+                    echo '<p><small>Show '.$lang.' in the language list</small></p>';
+                    echo '</fieldset>';
+                }
+                ?>
             </fieldset>
 
             <p class="submit"><input type="submit" name="save" value="<?php _e('Update options'); ?>" /></p>
         </form>
+        </div>
         <?php
-        echo '</div>';
     }
 }

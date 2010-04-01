@@ -120,6 +120,7 @@ class GTranslate extends WP_Widget {
 
     function admin_menu() {
         add_options_page('GTranslator Options', 'GTranslate', 'administrator', 'gtranslate_options', array('GTranslate', 'options'));
+
     }
 
     function options() { // -- TODO -- display options
@@ -180,18 +181,22 @@ class GTranslate extends WP_Widget {
                     </select>
                     <p><small>Your sites main language.</small></p>
                 </fieldset>
+                <table class="editform">
                 <?php
                 foreach($lang_array as $lng => $lang) {
-                    echo '<fieldset class="options">';
+                    echo '<tr>';
+                    echo '<td>';
                     _e('Show '.$lang);
-                    echo '<br />';
-                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="1" checked /> Yes</label><br />';
-                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="0" /> No</label><br />';
-                    echo '&nbsp;&nbsp;<label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="2" /> As a flag</label><br />';
-                    echo '<p><small>Show '.$lang.' in the language list</small></p>';
-                    echo '</fieldset>';
+                    echo '</td>';
+                    echo '<td><label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="1" checked /> Yes</label></td>';
+                    echo '<td><label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="0" /> No</label></td>';
+                    echo '<td><label><input type="radio" name="show_'.str_replace('-', '', $lng).'" value="2" /> As a flag</label></td>';
+                    //echo '<p><small>Show '.$lang.' in the language list</small></p>';
+                    echo '</tr>';
                 }
                 ?>
+                </table>
+                <p><small>Show selected language in the language list.</small></p>
             </fieldset>
 
             <p class="submit"><input type="submit" name="save" value="<?php _e('Update options'); ?>" /></p>

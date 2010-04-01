@@ -65,6 +65,31 @@ class GTranslate extends WP_Widget {
         echo $args['before_widget'];
         echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
 
+        $lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish');
+        $flag_map = array();
+        $i = $j = 0;
+        foreach($lang_array as $lang => $lang_name) {
+            $flag_map[$lang] = array($i*100, $j*100);
+            if($i == 7) {
+                $i = 0;
+                $j++;
+            } else {
+                $i++;
+            }
+        }
+
+        $flag_map_vertical = array();
+        $i = 0;
+        foreach($lang_array as $lang => $lang_name) {
+            $flag_map_vertical[$lang] = $i*16;
+            $i++;
+        }
+
+        asort($lang_array);
+        // Move the default language to the first position
+        $lang_array = array_merge(array($language => $lang_array[$language]), $lang_array);
+
+
         // -- TODO -- display the language selector
         echo 'BETA VERSION:';
         ?>
@@ -72,8 +97,14 @@ class GTranslate extends WP_Widget {
         <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                //includedLanguages: ''
+                pageLanguage: '<?php echo get_option('main_lang'); ?>',
+                includedLanguages: '<?php
+                foreach($lang_array as $lang => $lang_name) {
+                    $show_this = 'show_'.str_replace('-', '', $lang);
+                    if(get_option($show_this))
+                        echo $lang.',';
+                }
+                ?>'
             }, 'google_translate_element');
         }
         </script>
@@ -93,7 +124,58 @@ class GTranslate extends WP_Widget {
 
     function options() { // -- TODO -- display options
         echo '<div class="wrap">';
+        echo '<h2>GTranslate</h2>';
         echo '<p>The configuration settings are not ready yet.</p>';
+        ?>
+        <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
+            <fieldset>
+                <legend><h3><?php _e('General Configuration'); ?></h3></legend><br />
+                <fieldset class="options">
+                    <?php _e('Translation Method'); ?><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="google_default" checked /> <?php _e('Google Default'); ?></label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="ajax" /> <?php _e('On Fly (jQuery)'); ?></label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="main_lang" value="redirect" /> <?php _e('Redirect'); ?></label>
+                    <p><small>Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. On Fly (jQuery) can be configured, it will also use the on the fly translation method. Redirect method will redirect the visitor to the translated page, if the Pro version is installed it will use SEF URLs and keep the visitor on your domain, however this method cannot translate non-public pages.</small></p>
+                </fieldset>
+                <fieldset class="options">
+                    <label><input type="checkbox" name="pro_version" value="1" /> <?php _e('Operate with Pro version'); ?></label>
+                    <p><small>If you have Pro version installed you need to check this box. Find out more on <a href="http://edo.webmaster.am/gtranslate" target="_blank">http://edo.webmaster.am/gtranslate</a></small></p>
+                </fieldset>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><?php _e('Appearance Configuration'); ?></h3></legend><br />
+                <fieldset class="options">
+                    <?php _e('Look'); ?><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="look" value="both" checked /> <?php _e('Both'); ?></label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="look" value="dropdown" /> <?php _e('Dropdown list'); ?></label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="look" value="flags" /> <?php _e('Flags'); ?></label>
+                    <p><small>Select the look of the widget.</small></p>
+                </fieldset>
+                <fieldset class="options">
+                    <?php _e('Flag Size'); ?><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="16" checked /> 16</label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="24" /> 24</label><br />
+                    &nbsp;&nbsp;<label><input type="radio" name="flag_size" value="32" /> 32</label>
+                    <p><small>Select the flag size in pixels.</small></p>
+                </fieldset>
+                <fieldset class="options">
+                    <label><input type="checkbox" name="new_window" value="1" /> <?php _e('Open translated page in a new window'); ?></label>
+                    <p><small>The translated page will appear in a new window.</small></p>
+                </fieldset>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><?php _e('Language Configuration'); ?></h3></legend><br />
+                <fieldset class="options">
+                    <?php _e('Main Language'); ?><br />
+                    <p><small>Your sites main language.</small></p>
+                </fieldset>
+            </fieldset>
+
+            <p class="submit"><input type="submit" name="save" value="<?php _e('Update options'); ?>" /></p>
+        </form>
+        <?php
         echo '</div>';
     }
 }

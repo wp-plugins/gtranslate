@@ -5,13 +5,13 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 2.9
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
-Get translations with a single click between 52 languages (more than 98% of internet users) on your website!
+Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
 == Description ==
 
-This module uses Google power to translate your web page. With 52 available languages your site will be available to more than 98% of internet users.
+This module uses Google power to translate your web page. With 58 available languages your site will be available to more than 98% of internet users.
 
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
@@ -45,3 +45,6 @@ It's a Google translation, hence Google quality.
 
 = 1.0.0 =
 * Initial version for WordPress
+
+= 1.0.1
+* RC1 version

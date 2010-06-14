@@ -93,8 +93,8 @@ class GTranslate extends WP_Widget {
 
         extract($data);
 
-        unset($data['widget_code']);
-        echo '<pre>', print_r($data, true), '</pre>';
+        #unset($data['widget_code']);
+        #echo '<pre>', print_r($data, true), '</pre>';
 
 $script = <<<EOT
 

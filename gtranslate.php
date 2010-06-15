@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.2
+Version: 1.0.3
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -100,7 +100,8 @@ $script = <<<EOT
 
 function RefreshDoWidgetCode() {
     var new_line = "\\n";
-    var widget_code = '<!-- GTranslate: http://edo.webmaster.am/gtranslate -->'+new_line;
+    var widget_preview = '<!-- GTranslate: http://edo.webmaster.am/gtranslate -->'+new_line;
+    var widget_code = '';
     var translation_method = jQuery('#translation_method').val();
     var default_language = jQuery('#default_language').val();
     var flag_size = jQuery('#flag_size').val();
@@ -121,15 +122,15 @@ function RefreshDoWidgetCode() {
             }
         });
 
-        widget_code += '<div id="google_translate_element"></div>'+new_line;
-        widget_code += '<script type="text/javascript">'+new_line;
-        widget_code += 'function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'';
-        widget_code += default_language;
-        widget_code += '\', includedLanguages: \'';
-        widget_code += included_languages;
-        widget_code += "'}, 'google_translate_element');}"+new_line;
-        widget_code += '<\/script>';
-        widget_code += '<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>'+new_line;
+        widget_preview += '<div id="google_translate_element"></div>'+new_line;
+        widget_preview += '<script type="text/javascript">'+new_line;
+        widget_preview += 'function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'';
+        widget_preview += default_language;
+        widget_preview += '\', includedLanguages: \'';
+        widget_preview += included_languages;
+        widget_preview += "'}, 'google_translate_element');}"+new_line;
+        widget_preview += '<\/script>';
+        widget_preview += '<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>'+new_line;
     } else if(translation_method == 'on_fly' || translation_method == 'redirect') {
         // Adding flags
         if(jQuery('#show_flags:checked').length) {
@@ -139,37 +140,37 @@ function RefreshDoWidgetCode() {
                     lang_name = val;
                     flag_x = languages_map[lang.replace('-', '')+'_x'];
                     flag_y = languages_map[lang.replace('-', '')+'_y'];
-                    widget_code += '<a href="javascript:doGTranslate(\''+default_language+'|'+lang+'\')" title="'+lang_name+'" class="gflag" style="background-position:-'+flag_x+'px -'+flag_y+'px;"><img src="{$site_url}/wp-content/plugins/gtranslate/blank.png" height="'+flag_size+'" width="'+flag_size+'" alt="'+lang_name+'" /></a>';
+                    widget_preview += '<a href="javascript:doGTranslate(\''+default_language+'|'+lang+'\')" title="'+lang_name+'" class="gflag" style="background-position:-'+flag_x+'px -'+flag_y+'px;"><img src="{$site_url}/wp-content/plugins/gtranslate/blank.png" height="'+flag_size+'" width="'+flag_size+'" alt="'+lang_name+'" /></a>';
                 }
             });
 
             // Adding stylesheet
-            widget_code += new_line+new_line;
-            widget_code += '<style type="text/css">'+new_line;
-            widget_code += '<!--'+new_line;
-            widget_code += "a.gflag {font-size:"+flag_size+"px;padding:1px 0;background-repeat:no-repeat;background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+".png');}"+new_line;
-            widget_code += "a.gflag img {border:0;}"+new_line;
-            widget_code += "a.gflag:hover {background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+"a.png');}"+new_line;
-            widget_code += '-->'+new_line;
-            widget_code += '</style>'+new_line+new_line;
+            widget_preview += new_line+new_line;
+            widget_preview += '<style type="text/css">'+new_line;
+            widget_preview += '<!--'+new_line;
+            widget_preview += "a.gflag {font-size:"+flag_size+"px;padding:1px 0;background-repeat:no-repeat;background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+".png');}"+new_line;
+            widget_preview += "a.gflag img {border:0;}"+new_line;
+            widget_preview += "a.gflag:hover {background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+"a.png');}"+new_line;
+            widget_preview += '-->'+new_line;
+            widget_preview += '</style>'+new_line+new_line;
         }
 
         // Adding dropdown
         if(jQuery('#show_dropdown:checked').length) {
             if(jQuery('#show_flags:checked').length && jQuery('#add_new_line:checked').length)
-                widget_code += '<br />';
+                widget_preview += '<br />';
             else
-                widget_code += ' ';
-            widget_code += '<select onchange="doGTranslate(this);">';
-            widget_code += '<option value="">Select Language</option>';
+                widget_preview += ' ';
+            widget_preview += '<select onchange="doGTranslate(this);">';
+            widget_preview += '<option value="">Select Language</option>';
             jQuery.each(languages, function(i, val) {
                 lang = language_codes[i];
                 if(jQuery('#incl_langs'+lang+':checked').length) {
                     lang_name = val;
-                    widget_code += '<option value="'+default_language+'|'+lang+'">'+lang_name+'</option>';
+                    widget_preview += '<option value="'+default_language+'|'+lang+'">'+lang_name+'</option>';
                 }
             });
-            widget_code += '</select>';
+            widget_preview += '</select>';
         }
 
         // Adding javascript
@@ -209,18 +210,19 @@ function RefreshDoWidgetCode() {
 
     }
 
+    widget_code = widget_preview + widget_code;
+
     jQuery('#widget_code').val(widget_code);
 
-    ShowWidgetPreview(widget_code);
+    ShowWidgetPreview(widget_preview);
 
 }
 
-function ShowWidgetPreview(widget_code) {
-    var translation_method;
-    if(translation_method == 'redirect')
-        jQuery('#widget_preview').html(widget_code);
-    else
-        jQuery('#widget_preview').html(widget_code.replace(/javascript:doGTranslate/g, 'javascript:void').replace('onchange="doGTranslate(this);"', ''));
+function ShowWidgetPreview(widget_preview) {
+    widget_preview = widget_preview.replace(/javascript:doGTranslate/g, 'javascript:void')
+    widget_preview = widget_preview.replace('onchange="doGTranslate(this);"', '');
+    widget_preview = widget_preview.replace('if(jQuery.cookie', 'if(false && jQuery.cookie');
+    jQuery('#widget_preview').html(widget_preview);
 }
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);

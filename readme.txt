@@ -46,5 +46,5 @@ It's a Google translation, hence Google quality.
 = 1.0.0 =
 * Initial version for WordPress
 
-= 1.0.1
+= 1.0.1 =
 * RC1 version

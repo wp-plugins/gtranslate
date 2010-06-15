@@ -2,7 +2,7 @@
 Contributors: edo888
 Author: Edvard Ananyan
 Donate link: http://edo.webmaster.am/gtranslate
-Tags: translate, translation, automatic translator, google translate, ajax translator, jquery translator
+Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 2.9
 Stable tag: 1.0.3

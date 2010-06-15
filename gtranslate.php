@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.2
+Version: 1.0.0
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -532,6 +532,14 @@ EOT;
     }
 
     function load_defaults(& $data) {
-        // -- TODO -- define defaults
+        $data['pro_version'] = '';
+        $data['new_window'] = '';
+        $data['load_jquery'] = '1';
+        $data['add_new_line'] = '1';
+        $data['show_dropdown'] = '1';
+        $data['show_flags'] = '1';
+        $data['default_language'] = 'en';
+        $data['translation_method'] = 'on_fly';
+        $data['flag_size'] = '16';
     }
 }

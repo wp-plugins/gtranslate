@@ -54,3 +54,6 @@ It's a Google translation, hence Google quality.
 
 = 1.0.3 =
 * Stable version released
+
+= 1.0.4 =
+* Minor changes

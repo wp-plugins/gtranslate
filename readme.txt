@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 2.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 

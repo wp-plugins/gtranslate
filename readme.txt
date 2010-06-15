@@ -48,3 +48,6 @@ It's a Google translation, hence Google quality.
 
 = 1.0.1 =
 * RC1 version
+
+= 1.0.2 =
+* RC2 version

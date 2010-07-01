@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.4
+Version: 1.0.5
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -534,14 +534,14 @@ EOT;
     }
 
     function load_defaults(& $data) {
-        $data['pro_version'] = '';
-        $data['new_window'] = '';
-        $data['load_jquery'] = '1';
-        $data['add_new_line'] = '1';
-        $data['show_dropdown'] = '1';
-        $data['show_flags'] = '1';
-        $data['default_language'] = 'en';
-        $data['translation_method'] = 'on_fly';
-        $data['flag_size'] = '16';
+        $data['pro_version'] = isset($data['pro_version']) ? $data['pro_version'] : '';
+        $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';
+        $data['load_jquery'] = isset($data['load_jquery']) ? $data['load_jquery'] : '1';
+        $data['add_new_line'] = isset($data['add_new_line']) ? $data['add_new_line'] : '1';
+        $data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
+        $data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
+        $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
+        $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'on_fly';
+        $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
     }
 }

@@ -60,3 +60,6 @@ It's a Google translation, hence Google quality.
 
 = 1.0.5 =
 * Bug fixed: settings save problem
+
+= 1.0.6 =
+* Bug fixed: magic_quotes_gpc problem

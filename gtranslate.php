@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.6
+Version: 1.0.7
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -34,7 +34,7 @@ add_action('admin_menu', array('GTranslate', 'admin_menu'));
 class GTranslate extends WP_Widget {
     function activate() {
         $data = array(
-            'gtranslate_title' => 'GTranslate',
+            'gtranslate_title' => 'Translate',
         );
 
         if(get_option('GTranslate'))
@@ -64,7 +64,7 @@ class GTranslate extends WP_Widget {
         self::load_defaults(& $data);
 
         echo $args['before_widget'];
-        echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
+        echo $args['before_title'] . '<a href="http://www.asiatranslate.net/website-translation.html" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
         echo $data['widget_code'];
         echo $args['after_widget'];
     }

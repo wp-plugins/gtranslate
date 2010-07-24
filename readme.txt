@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.0
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -22,6 +22,8 @@ This module uses Google power to translate your web page. With 58 available lang
 * Available styles Dropdown/Flags/flags with dropdown
 * Valid XHTML
 
+Keywords: google translation, google translate, google translator, automatic translator, automatic translation, ajax translator, ajax translate, jquery translator, jquery translate
+
 == Installation ==
 
 1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
@@ -36,6 +38,12 @@ To configure the widget go to Settings -> GTranslate
 
 = What is the quality of translation? =
 It's a Google translation, hence Google quality.
+
+= Which languages are supported? =
+Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Haitian Creole, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Korean, Latvian, Lithuanian, Macedonian, Malay, Maltese, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish
+
+= Can I exclude some parts from being translated? =
+Yes, you need to wrap the text you don't want to be translated with <span class="notranslate"></span>.
 
 == Screenshots ==
 
@@ -67,3 +75,7 @@ It's a Google translation, hence Google quality.
 = 1.0.7 =
 * Widget title changed
 * Link added
+
+= 1.0.8 =
+* Keywords added in the description page
+* FAQ updated

@@ -5,13 +5,13 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.0
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
 == Description ==
 
-This module uses Google power to translate your web page. With 58 available languages your site will be available to more than 98% of internet users. Visit http://edo.webmaster.am/gtranslate for more details and features.
+This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users. Visit http://edo.webmaster.am/gtranslate for more details and features.
 
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
@@ -79,3 +79,6 @@ Yes, you need to wrap the text you don't want to be translated with <span class=
 = 1.0.8 =
 * Keywords added in the description page
 * FAQ updated
+
+= 1.0.9 =
+* Updated the description

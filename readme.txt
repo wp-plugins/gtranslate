@@ -5,9 +5,9 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.0
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 
-Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
+Get translations with a single click between 58 languages (more than 98% of internet users) on your website with the help of Google Translate automatic translation service!
 
 == Description ==
 
@@ -43,7 +43,7 @@ It's a Google translation, hence Google quality.
 Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Haitian Creole, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Korean, Latvian, Lithuanian, Macedonian, Malay, Maltese, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish
 
 = Can I exclude some parts from being translated? =
-Yes, you need to wrap the text you don't want to be translated with <span class="notranslate"></span>.
+Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
 
 == Screenshots ==
 
@@ -51,34 +51,39 @@ Yes, you need to wrap the text you don't want to be translated with <span class=
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial version for WordPress
+= 1.0.10 =
+* Bug fixed: configuration settings were lost after update
+* FAQ updated
+* Changelog reordered
 
-= 1.0.1 =
-* RC1 version
-
-= 1.0.2 =
-* RC2 version
-
-= 1.0.3 =
-* Stable version released
-
-= 1.0.4 =
-* Minor changes
-
-= 1.0.5 =
-* Bug fixed: settings save problem
-
-= 1.0.6 =
-* Bug fixed: magic_quotes_gpc problem
-
-= 1.0.7 =
-* Widget title changed
-* Link added
+= 1.0.9 =
+* Updated the description
 
 = 1.0.8 =
 * Keywords added in the description page
 * FAQ updated
 
-= 1.0.9 =
-* Updated the description
+= 1.0.7 =
+* Widget title changed
+* Link added
+
+= 1.0.6 =
+* Bug fixed: magic_quotes_gpc problem
+
+= 1.0.5 =
+* Bug fixed: settings save problem
+
+= 1.0.4 =
+* Minor changes
+
+= 1.0.3 =
+* Stable version released
+
+= 1.0.2 =
+* RC2 version
+
+= 1.0.1 =
+* RC1 version
+
+= 1.0.0 =
+* Initial version for WordPress

@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.9
+Version: 1.0.10
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -36,15 +36,13 @@ class GTranslate extends WP_Widget {
         $data = array(
             'gtranslate_title' => 'Translate',
         );
+        self::load_defaults(& $data);
 
-        if(get_option('GTranslate'))
-            update_option('GTranslate', $data);
-        else
-            add_option('GTranslate', $data);
+        add_option('GTranslate', $data);
     }
 
     function deactivate() {
-        delete_option('GTranslate');
+        // delete_option('GTranslate');
     }
 
     function control() {
@@ -65,7 +63,10 @@ class GTranslate extends WP_Widget {
 
         echo $args['before_widget'];
         echo $args['before_title'] . '<a href="http://www.asiatranslate.net/website-translation.html" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
-        echo $data['widget_code'];
+        if(empty($data['widget_code']))
+            echo 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
+        else
+            echo $data['widget_code'];
         echo $args['after_widget'];
     }
 
@@ -75,8 +76,7 @@ class GTranslate extends WP_Widget {
     }
 
     function admin_menu() {
-        add_options_page('GTranslator Options', 'GTranslate', 'administrator', 'gtranslate_options', array('GTranslate', 'options'));
-
+        add_options_page('GTranslate Options', 'GTranslate', 'administrator', 'gtranslate_options', array('GTranslate', 'options'));
     }
 
     function options() {
@@ -540,5 +540,6 @@ EOT;
         $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
         $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'on_fly';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
+        $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
     }
 }

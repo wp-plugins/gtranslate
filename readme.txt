@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.0
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website with the help of Google Translate automatic translation service!
 
@@ -17,6 +17,7 @@ This module uses Google Translate automatic translation service to translate you
 * Hides Google top frame after translation
 * Mouse over effect
 * Flags combined in one file to load faster
+* Analytics
 * Option to open translated page in new window
 * Option to translate the page on fly
 * Available styles Dropdown/Flags/flags with dropdown
@@ -36,6 +37,9 @@ To configure the widget go to Settings -> GTranslate
 
 == Frequently Asked Questions ==
 
+= Where I can see analytics data? =
+You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
+
 = What is the quality of translation? =
 It's a Google translation, hence Google quality.
 
@@ -50,6 +54,10 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.11 =
+* Analytics feature implemented. If you have Google Analytics _gaq code on your site you can enable it and see the language usage.
+* Fixed issue with the cookie path in On Fly method
 
 = 1.0.10 =
 * Bug fixed: configuration settings were lost after update

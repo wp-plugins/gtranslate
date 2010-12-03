@@ -107,6 +107,7 @@ function RefreshDoWidgetCode() {
     var flag_size = jQuery('#flag_size').val();
     var pro_version = jQuery('#pro_version:checked').length > 0 ? true : false;
     var new_window = jQuery('#new_window:checked').length > 0 ? true : false;
+    var analytics = jQuery('#analytics:checked').length > 0 ? true : false;
 
     var languages = ['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bulgarian','Catalan','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Haitian Creole','Hebrew','Hindi','Hungarian','Icelandic','Indonesian','Irish','Italian','Japanese','Korean','Latvian','Lithuanian','Macedonian','Malay','Maltese','Norwegian','Persian','Polish','Portuguese','Romanian','Russian','Serbian','Slovak','Slovenian','Spanish','Swahili','Swedish','Thai','Turkish','Ukrainian','Urdu','Vietnamese','Welsh','Yiddish'];
     var language_codes = ['af','sq','ar','hy','az','eu','be','bg','ca','zh-CN','zh-TW','hr','cs','da','nl','en','et','tl','fi','fr','gl','ka','de','el','ht','iw','hi','hu','is','id','ga','it','ja','ko','lv','lt','mk','ms','mt','no','fa','pl','pt','ro','ru','sr','sk','sl','es','sw','sv','th','tr','uk','ur','vi','cy','yi'];
@@ -186,23 +187,38 @@ function RefreshDoWidgetCode() {
         widget_code += '//<![CDATA['+new_line;
         if(pro_version && translation_method == 'redirect' && new_window) {
             widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
-            widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}"+new_line;
         } else if(pro_version && translation_method == 'redirect') {
-            widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='"+default_language+"';if(lang == '"+default_language+"')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}"+new_line;
         } else if(translation_method == 'redirect' && new_window) {
             widget_code += 'if(top.location!=self.location)top.location=self.location;'+new_line;
             widget_code += "window['_tipoff']=function(){};window['_tipon']=function(a){};"+new_line;
-            widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')openTab(unescape(gfg('u')));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')openTab(unescape(gfg('u')));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')openTab(unescape(gfg('u')));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}"+new_line;
             widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
             widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
         } else if(translation_method == 'redirect') {
             widget_code += 'if(top.location!=self.location)top.location=self.location;'+new_line;
             widget_code += "window['_tipoff']=function(){};window['_tipon']=function(a){};"+new_line;
-            widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
             widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
         } else if(translation_method == 'on_fly') {
             widget_code += "if(jQuery.cookie('glang') && jQuery.cookie('glang') != '"+default_language+"') jQuery(function(\$){\$('body').translate('"+default_language+"', \$.cookie('glang'), {toggle:true, not:'.notranslate'});});"+new_line;
-            widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];if(lang=='pt')lang='pt-PT';jQuery.cookie('glang', lang);jQuery(function(\$){\$('body').translate('"+default_language+"', lang, {toggle:true, not:'.notranslate'});});}"+new_line;
+            if(analytics)
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('"+default_language+"', lang, {toggle:true, not:'.notranslate'});});}"+new_line;
+            else
+                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('"+default_language+"', lang, {toggle:true, not:'.notranslate'});});}"+new_line;
         }
 
         widget_code += '//]]>'+new_line;
@@ -227,6 +243,7 @@ function ShowWidgetPreview(widget_preview) {
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
 jQuery('#new_window').attr('checked', '$new_window'.length > 0);
+jQuery('#analytics').attr('checked', '$analytics'.length > 0);
 jQuery('#load_jquery').attr('checked', '$load_jquery'.length > 0);
 jQuery('#add_new_line').attr('checked', '$add_new_line'.length > 0);
 jQuery('#show_dropdown').attr('checked', '$show_dropdown'.length > 0);
@@ -331,6 +348,10 @@ EOT;
             <tr>
                 <td class="option_name">Open in new window:</td>
                 <td><input id="new_window" name="new_window" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
+            </tr>
+            <tr>
+                <td class="option_name">Analytics:</td>
+                <td><input id="analytics" name="analytics" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
             </tr>
             <tr>
                 <td class="option_name">Operate with Pro version:</td>
@@ -495,6 +516,7 @@ EOT;
             <h4>Widget preview</h4>
             <div id="widget_preview"></div>
             <div style="margin-top:15px;"><small class="black">Save the changes to see it in action.</small></div>
+            <div style="margin-top:15px;"><small class="black">Note: Analytics feature can be enabled if you have Google Analytics _gaq code in your site. To see the analytics data you need to login to your Google Analytics account -> Content -> Event Tracking. Will not work in Google Default translation method.</small></div>
         </div>
 
         <div style="clear:both;"></div>
@@ -516,6 +538,7 @@ EOT;
 
         $data['pro_version'] = $_POST['pro_version'];
         $data['new_window'] = $_POST['new_window'];
+        $data['analytics'] = $_POST['analytics'];
         $data['load_jquery'] = $_POST['load_jquery'];
         $data['default_language'] = $_POST['default_language'];
         $data['translation_method'] = $_POST['translation_method'];
@@ -533,6 +556,7 @@ EOT;
     function load_defaults(& $data) {
         $data['pro_version'] = isset($data['pro_version']) ? $data['pro_version'] : '';
         $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';
+        $data['analytics'] = isset($data['analytics']) ? $data['analytics'] : '';
         $data['load_jquery'] = isset($data['load_jquery']) ? $data['load_jquery'] : '1';
         $data['add_new_line'] = isset($data['add_new_line']) ? $data['add_new_line'] : '1';
         $data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';

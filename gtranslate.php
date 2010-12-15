@@ -82,6 +82,7 @@ class GTranslate extends WP_Widget {
     function options() {
         ?>
         <div class="wrap">
+        <div id="icon-options-general" class="icon32"><br/></div>
         <h2>GTranslate</h2>
         <?php
         if($_POST['save'])

@@ -63,6 +63,8 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 == Changelog ==
 
 = 1.0.13 =
+* jQuery conflicts fixed, using default wp jquery library
+* jQuery Translate updated to v1.4.7
 * CSRF Security Vulnerability fix
 
 = 1.0.12 =

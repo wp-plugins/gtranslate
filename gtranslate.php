@@ -30,13 +30,14 @@ add_action('widgets_init', array('GTranslate', 'register'));
 register_activation_hook(__FILE__, array('GTranslate', 'activate'));
 register_deactivation_hook(__FILE__, array('GTranslate', 'deactivate'));
 add_action('admin_menu', array('GTranslate', 'admin_menu'));
+add_action('init', array('GTranslate', 'enqueue_scripts'));
 
 class GTranslate extends WP_Widget {
     function activate() {
         $data = array(
             'gtranslate_title' => 'Translate',
         );
-        self::load_defaults(& $data);
+        GTranslate::load_defaults(& $data);
 
         add_option('GTranslate', $data);
     }
@@ -57,9 +58,22 @@ class GTranslate extends WP_Widget {
         }
     }
 
+    function enqueue_scripts() {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults(& $data);
+        $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
+
+        if($data['translation_method'] == 'on_fly' and $data['load_jquery'] and !is_admin()) {
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js', array('jquery'));
+        }
+
+        wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');
+    }
+
     function widget($args) {
         $data = get_option('GTranslate');
-        self::load_defaults(& $data);
+        GTranslate::load_defaults(& $data);
 
         echo $args['before_widget'];
         echo $args['before_title'] . '<a href="http://www.asiatranslate.net/website-translation.html" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
@@ -86,9 +100,9 @@ class GTranslate extends WP_Widget {
         <h2>GTranslate</h2>
         <?php
         if($_POST['save'])
-            self::control_options();
+            GTranslate::control_options();
         $data = get_option('GTranslate');
-        self::load_defaults(& $data);
+        GTranslate::load_defaults(& $data);
 
         $site_url = get_option('siteurl');
 
@@ -145,16 +159,6 @@ function RefreshDoWidgetCode() {
                     widget_preview += '<a href="javascript:doGTranslate(\''+default_language+'|'+lang+'\')" title="'+lang_name+'" class="gflag" style="background-position:-'+flag_x+'px -'+flag_y+'px;"><img src="{$site_url}/wp-content/plugins/gtranslate/blank.png" height="'+flag_size+'" width="'+flag_size+'" alt="'+lang_name+'" /></a>';
                 }
             });
-
-            // Adding stylesheet
-            widget_preview += new_line+new_line;
-            widget_preview += '<style type="text/css">'+new_line;
-            widget_preview += '<!--'+new_line;
-            widget_preview += "a.gflag {font-size:"+flag_size+"px;padding:1px 0;background-repeat:no-repeat;background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+".png');}"+new_line;
-            widget_preview += "a.gflag img {border:0;}"+new_line;
-            widget_preview += "a.gflag:hover {background-image:url('{$site_url}/wp-content/plugins/gtranslate/"+flag_size+"a.png');}"+new_line;
-            widget_preview += '-->'+new_line;
-            widget_preview += '</style>'+new_line+new_line;
         }
 
         // Adding dropdown
@@ -177,13 +181,6 @@ function RefreshDoWidgetCode() {
 
         // Adding javascript
         widget_code += new_line+new_line;
-        if(translation_method == 'on_fly') {
-            if(jQuery('#load_jquery:checked').length) {
-                widget_code += '<script type="text/javascript" src="{$site_url}/wp-content/plugins/gtranslate/jquery.js"><\/script>'+new_line;
-            }
-            widget_code += '<script type="text/javascript" src="{$site_url}/wp-content/plugins/gtranslate/jquery-translate.js"><\/script>'+new_line;
-        }
-
         widget_code += '<script type="text/javascript">'+new_line;
         widget_code += '//<![CDATA['+new_line;
         if(pro_version && translation_method == 'redirect' && new_window) {

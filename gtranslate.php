@@ -260,7 +260,7 @@ EOT;
 ?>
         <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
-        <p>If you would like to have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate" target="_blank">GTranslate Pro</a> version.</p>
+        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate" target="_blank">GTranslate Pro</a> version.</p>
         <div style="float:left;width:270px;">
             <h4>Widget options</h4>
             <table style="font-size:11px;">
@@ -515,6 +515,7 @@ EOT;
             <div id="widget_preview"></div>
             <div style="margin-top:15px;"><small class="black">Save the changes to see it in action.</small></div>
             <div style="margin-top:15px;"><small class="black">Note: Analytics feature can be enabled if you have Google Analytics _gaq code in your site. To see the analytics data you need to login to your Google Analytics account -> Content -> Event Tracking. Will not work in Google Default translation method.</small></div>
+            <div style="margin-top:15px;"><small class="black">Note: You will need to use Redirect translation methotd with "Operate with Pro version" on if you have installed the Pro version.</small></div>
         </div>
 
         <div style="clear:both;"></div>

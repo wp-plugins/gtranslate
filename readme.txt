@@ -4,14 +4,18 @@ Author: Edvard Ananyan
 Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
-Tested up to: 3.0
-Stable tag: 1.0.12
+Tested up to: 3.1
+Stable tag: 1.0.13
 
-Get translations with a single click between 58 languages (more than 98% of internet users) on your website with the help of Google Translate automatic translation service!
+Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
 == Description ==
 
-This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users. Visit http://edo.webmaster.am/gtranslate for more details and features.
+This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.
+
+Visit http://edo.webmaster.am/gtranslate for more details and features like <b>translation editing</b> and <b>SEO URLs</b>.
+
+Please <u>use</u> http://edo.webmaster.am/forum/gtranslate/ for your questions and support requests!
 
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
@@ -37,6 +41,9 @@ To configure the widget go to Settings -> GTranslate
 
 == Frequently Asked Questions ==
 
+= It doesn't work, what to do? =
+Please feel free to create a new topic on ttp://edo.webmaster.am/forum/gtranslate/
+
 = Where I can see analytics data? =
 You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
 
@@ -54,6 +61,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.13 =
+* CSRF Security Vulnerability fix
 
 = 1.0.12 =
 * No changes made

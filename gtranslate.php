@@ -526,6 +526,7 @@ EOT;
             <h4>Widget code</h4>
             You can edit this if you wish:<br />
             <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea>
+            <?php wp_nonce_field('gtranslate-save'); ?>
         </div>
             <p class="submit"><input type="submit" class="button-primary" name="save" value="<?php _e('Save Changes'); ?>" /></p>
         </form>
@@ -535,6 +536,8 @@ EOT;
     }
 
     function control_options() {
+        check_admin_referer('gtranslate-save');
+
         $data = get_option('GTranslate');
 
         $data['pro_version'] = $_POST['pro_version'];

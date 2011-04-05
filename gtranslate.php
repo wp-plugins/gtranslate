@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.13
+Version: 1.0.14
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -522,6 +522,7 @@ EOT;
 
         <div style="margin-top:20px;">
             <h4>Widget code</h4>
+            <span style="color:red;">DO NOT COPY THIS INTO YOUR POSTS OR PAGES!<br />Add a GTranslate widget into your sidebar from Appearance -> Widgets instead.</span><br /><br />
             You can edit this if you wish:<br />
             <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea>
             <?php wp_nonce_field('gtranslate-save'); ?>

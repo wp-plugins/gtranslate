@@ -13,7 +13,7 @@ Get translations with a single click between 58 languages (more than 98% of inte
 
 This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.
 
-Visit http://edo.webmaster.am/gtranslate for more details and features like <b>translation editing</b> and <b>SEO URLs</b>.
+Visit http://edo.webmaster.am/gtranslate?xyz=998 for more details and features like <b>translation editing</b> and <b>SEO URLs</b>.
 
 Please <u>use</u> http://edo.webmaster.am/forum/gtranslate/ for your questions and support requests!
 

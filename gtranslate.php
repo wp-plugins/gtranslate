@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: GTranslate
-Plugin URI: http://edo.webmaster.am/gtranslate
+Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.14
+Version: 1.0.15
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -260,7 +260,7 @@ EOT;
 ?>
         <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
-        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate" target="_blank">GTranslate Pro</a> version.</p>
+        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate?xyz=998" target="_blank">GTranslate Pro</a> version.</p>
         <div style="float:left;width:270px;">
             <h4>Widget options</h4>
             <table style="font-size:11px;">

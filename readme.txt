@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.1
-Stable tag: 1.0.15
+Stable tag: 1.0.16
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -34,7 +34,7 @@ Keywords: google translation, google translate, google translator, automatic tra
 
 1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. You can add a widget to your website.
+3. You can add a widget to your website or use [GTranslate] syntax inside pages where you want it to appear.
 
 == Configuration ==
 
@@ -62,6 +62,12 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.16 =
+* Added [GTranslate] syntax to be used inside wordpress articles/pages
+
+= 1.0.15 =
+* Added aff link to track visits from wordpress on my site
 
 = 1.0.14 =
 * Added notes, so people will not copy the code into their posts

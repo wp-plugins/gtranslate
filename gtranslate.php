@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
-Version: 1.0.15
+Version: 1.0.16
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -31,6 +31,8 @@ register_activation_hook(__FILE__, array('GTranslate', 'activate'));
 register_deactivation_hook(__FILE__, array('GTranslate', 'deactivate'));
 add_action('admin_menu', array('GTranslate', 'admin_menu'));
 add_action('init', array('GTranslate', 'enqueue_scripts'));
+add_shortcode('GTranslate', array('GTranslate', 'get_widget_code'));
+add_shortcode('gtranslate', array('GTranslate', 'get_widget_code'));
 
 class GTranslate extends WP_Widget {
     function activate() {
@@ -82,6 +84,16 @@ class GTranslate extends WP_Widget {
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
+    }
+
+    function get_widget_code($atts) {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults(& $data);
+
+        if(empty($data['widget_code']))
+            return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
+        else
+            return $data['widget_code'];
     }
 
     function register() {
@@ -522,7 +534,7 @@ EOT;
 
         <div style="margin-top:20px;">
             <h4>Widget code</h4>
-            <span style="color:red;">DO NOT COPY THIS INTO YOUR POSTS OR PAGES!<br />Add a GTranslate widget into your sidebar from Appearance -> Widgets instead.</span><br /><br />
+            <span style="color:red;">DO NOT COPY THIS INTO YOUR POSTS OR PAGES! Put [GTranslate] inside the post/page <br />or add a GTranslate widget into your sidebar from Appearance -> Widgets instead.</span><br /><br />
             You can edit this if you wish:<br />
             <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea>
             <?php wp_nonce_field('gtranslate-save'); ?>

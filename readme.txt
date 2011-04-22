@@ -43,7 +43,7 @@ To configure the widget go to Settings -> GTranslate
 == Frequently Asked Questions ==
 
 = It doesn't work, what to do? =
-Please feel free to create a new topic on [GTranslate Forum](http://edo.webmaster.am/forum/gtranslate/)
+Please check the [Troubleshooting](http://edo.webmaster.am/forum/gtranslate/troubleshooting-gtranslate-free-t370.html) and feel free to create a new topic if you cannot find your case.
 
 = Where I can see analytics data? =
 You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.

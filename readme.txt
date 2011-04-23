@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.1
-Stable tag: 1.0.16
+Stable tag: 1.0.17
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -62,6 +62,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.17 =
+* Minor changes in readme.txt
 
 = 1.0.16 =
 * Added [GTranslate] syntax to be used inside wordpress articles/pages

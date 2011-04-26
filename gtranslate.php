@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://edo.webmaster.am/forum/gtranslate/">GTranslate Forum</a>.
-Version: 1.0.17
+Version: 1.0.18
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -39,6 +39,7 @@ class GTranslate extends WP_Widget {
         $data = array(
             'gtranslate_title' => 'Translate',
         );
+        $data = get_option('GTranslate');
         GTranslate::load_defaults(& $data);
 
         add_option('GTranslate', $data);
@@ -125,6 +126,10 @@ class GTranslate extends WP_Widget {
 
 $script = <<<EOT
 
+var languages = ['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bulgarian','Catalan','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Haitian Creole','Hebrew','Hindi','Hungarian','Icelandic','Indonesian','Irish','Italian','Japanese','Korean','Latvian','Lithuanian','Macedonian','Malay','Maltese','Norwegian','Persian','Polish','Portuguese','Romanian','Russian','Serbian','Slovak','Slovenian','Spanish','Swahili','Swedish','Thai','Turkish','Ukrainian','Urdu','Vietnamese','Welsh','Yiddish'];
+var language_codes = ['af','sq','ar','hy','az','eu','be','bg','ca','zh-CN','zh-TW','hr','cs','da','nl','en','et','tl','fi','fr','gl','ka','de','el','ht','iw','hi','hu','is','id','ga','it','ja','ko','lv','lt','mk','ms','mt','no','fa','pl','pt','ro','ru','sr','sk','sl','es','sw','sv','th','tr','uk','ur','vi','cy','yi'];
+var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, zhCN_x: 300, zhCN_y: 0, zhTW_x: 400, zhTW_y: 0, hr_x: 500, hr_y: 0, cs_x: 600, cs_y: 0, da_x: 700, da_y: 0, nl_x: 0, nl_y: 100, fi_x: 100, fi_y: 100, fr_x: 200, fr_y: 100, de_x: 300, de_y: 100, el_x: 400, el_y: 100, hi_x: 500, hi_y: 100, it_x: 600, it_y: 100, ja_x: 700, ja_y: 100, ko_x: 0, ko_y: 200, no_x: 100, no_y: 200, pl_x: 200, pl_y: 200, pt_x: 300, pt_y: 200, ro_x: 400, ro_y: 200, ru_x: 500, ru_y: 200, es_x: 600, es_y: 200, sv_x: 700, sv_y: 200, ca_x: 0, ca_y: 300, tl_x: 100, tl_y: 300, iw_x: 200, iw_y: 300, id_x: 300, id_y: 300, lv_x: 400, lv_y: 300, lt_x: 500, lt_y: 300, sr_x: 600, sr_y: 300, sk_x: 700, sk_y: 300, sl_x: 0, sl_y: 400, uk_x: 100, uk_y: 400, vi_x: 200, vi_y: 400, sq_x: 300, sq_y: 400, et_x: 400, et_y: 400, gl_x: 500, gl_y: 400, hu_x: 600, hu_y: 400, mt_x: 700, mt_y: 400, th_x: 0, th_y: 500, tr_x: 100, tr_y: 500, fa_x: 200, fa_y: 500, af_x: 300, af_y: 500, ms_x: 400, ms_y: 500, sw_x: 500, sw_y: 500, ga_x: 600, ga_y: 500, cy_x: 700, cy_y: 500, be_x: 0, be_y: 600, is_x: 100, is_y: 600, mk_x: 200, mk_y: 600, yi_x: 300, yi_y: 600, hy_x: 400, hy_y: 600, az_x: 500, az_y: 600, eu_x: 600, eu_y: 600, ka_x: 700, ka_y: 600, ht_x: 0, ht_y: 700, ur_x: 100, ur_y: 700};
+
 function RefreshDoWidgetCode() {
     var new_line = "\\n";
     var widget_preview = '<!-- GTranslate: http://edo.webmaster.am/gtranslate -->'+new_line;
@@ -136,17 +141,13 @@ function RefreshDoWidgetCode() {
     var new_window = jQuery('#new_window:checked').length > 0 ? true : false;
     var analytics = jQuery('#analytics:checked').length > 0 ? true : false;
 
-    var languages = ['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bulgarian','Catalan','Chinese (Simplified)','Chinese (Traditional)','Croatian','Czech','Danish','Dutch','English','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Haitian Creole','Hebrew','Hindi','Hungarian','Icelandic','Indonesian','Irish','Italian','Japanese','Korean','Latvian','Lithuanian','Macedonian','Malay','Maltese','Norwegian','Persian','Polish','Portuguese','Romanian','Russian','Serbian','Slovak','Slovenian','Spanish','Swahili','Swedish','Thai','Turkish','Ukrainian','Urdu','Vietnamese','Welsh','Yiddish'];
-    var language_codes = ['af','sq','ar','hy','az','eu','be','bg','ca','zh-CN','zh-TW','hr','cs','da','nl','en','et','tl','fi','fr','gl','ka','de','el','ht','iw','hi','hu','is','id','ga','it','ja','ko','lv','lt','mk','ms','mt','no','fa','pl','pt','ro','ru','sr','sk','sl','es','sw','sv','th','tr','uk','ur','vi','cy','yi'];
-    var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, zhCN_x: 300, zhCN_y: 0, zhTW_x: 400, zhTW_y: 0, hr_x: 500, hr_y: 0, cs_x: 600, cs_y: 0, da_x: 700, da_y: 0, nl_x: 0, nl_y: 100, fi_x: 100, fi_y: 100, fr_x: 200, fr_y: 100, de_x: 300, de_y: 100, el_x: 400, el_y: 100, hi_x: 500, hi_y: 100, it_x: 600, it_y: 100, ja_x: 700, ja_y: 100, ko_x: 0, ko_y: 200, no_x: 100, no_y: 200, pl_x: 200, pl_y: 200, pt_x: 300, pt_y: 200, ro_x: 400, ro_y: 200, ru_x: 500, ru_y: 200, es_x: 600, es_y: 200, sv_x: 700, sv_y: 200, ca_x: 0, ca_y: 300, tl_x: 100, tl_y: 300, iw_x: 200, iw_y: 300, id_x: 300, id_y: 300, lv_x: 400, lv_y: 300, lt_x: 500, lt_y: 300, sr_x: 600, sr_y: 300, sk_x: 700, sk_y: 300, sl_x: 0, sl_y: 400, uk_x: 100, uk_y: 400, vi_x: 200, vi_y: 400, sq_x: 300, sq_y: 400, et_x: 400, et_y: 400, gl_x: 500, gl_y: 400, hu_x: 600, hu_y: 400, mt_x: 700, mt_y: 400, th_x: 0, th_y: 500, tr_x: 100, tr_y: 500, fa_x: 200, fa_y: 500, af_x: 300, af_y: 500, ms_x: 400, ms_y: 500, sw_x: 500, sw_y: 500, ga_x: 600, ga_y: 500, cy_x: 700, cy_y: 500, be_x: 0, be_y: 600, is_x: 100, is_y: 600, mk_x: 200, mk_y: 600, yi_x: 300, yi_y: 600, hy_x: 400, hy_y: 600, az_x: 500, az_y: 600, eu_x: 600, eu_y: 600, ka_x: 700, ka_y: 600, ht_x: 0, ht_y: 700, ur_x: 100, ur_y: 700};
-
     if(translation_method == 'google_default') {
         included_languages = '';
         jQuery.each(languages, function(i, val) {
             lang = language_codes[i];
             if(jQuery('#incl_langs'+lang+':checked').length) {
                 lang_name = val;
-                included_languages
+                included_languages += ','+lang;
             }
         });
 
@@ -267,8 +268,17 @@ if(jQuery('#widget_code').val() == '')
     RefreshDoWidgetCode();
 else
     ShowWidgetPreview(jQuery('#widget_code').val());
-
 EOT;
+
+// selected languages
+if(count($incl_langs) > 0)
+    $script .= "jQuery.each(languages, function(i, val) {jQuery('#incl_langs'+language_codes[i]).attr('checked', false);});\n";
+if(count($fincl_langs) > 0)
+    $script .= "jQuery.each(languages, function(i, val) {jQuery('#fincl_langs'+language_codes[i]).attr('checked', false);});\n";
+foreach($incl_langs as $lang)
+    $script .= "jQuery('#incl_langs$lang').attr('checked', true);\n";
+foreach($fincl_langs as $lang)
+    $script .= "jQuery('#fincl_langs$lang').attr('checked', true);\n";
 ?>
         <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
@@ -385,64 +395,64 @@ EOT;
                 <td class="option_name">Flag languages:</td>
                 <td>
                 <div style="height:55px;overflow-y:scroll;">
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsaf" name="fincl_langs" value="af"><label for="fincl_langsaf">Afrikaans</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssq" name="fincl_langs" value="sq"><label for="fincl_langssq">Albanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsar" name="fincl_langs" value="ar"><label for="fincl_langsar">Arabic</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshy" name="fincl_langs" value="hy"><label for="fincl_langshy">Armenian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsaz" name="fincl_langs" value="az"><label for="fincl_langsaz">Azerbaijani</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langseu" name="fincl_langs" value="eu"><label for="fincl_langseu">Basque</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsbe" name="fincl_langs" value="be"><label for="fincl_langsbe">Belarusian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsbg" name="fincl_langs" value="bg"><label for="fincl_langsbg">Bulgarian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsca" name="fincl_langs" value="ca"><label for="fincl_langsca">Catalan</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langszh-CN" name="fincl_langs" value="zh-CN"><label for="fincl_langszh-CN">Chinese (Simplified)</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langszh-TW" name="fincl_langs" value="zh-TW"><label for="fincl_langszh-TW">Chinese (Traditional)</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshr" name="fincl_langs" value="hr"><label for="fincl_langshr">Croatian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscs" name="fincl_langs" value="cs"><label for="fincl_langscs">Czech</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsda" name="fincl_langs" value="da"><label for="fincl_langsda">Danish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsnl" name="fincl_langs" value="nl"><label for="fincl_langsnl">Dutch</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsen" name="fincl_langs" value="en" checked><label for="fincl_langsen">English</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langset" name="fincl_langs" value="et"><label for="fincl_langset">Estonian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langstl" name="fincl_langs" value="tl"><label for="fincl_langstl">Filipino</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfi" name="fincl_langs" value="fi"><label for="fincl_langsfi">Finnish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfr" name="fincl_langs" value="fr" checked><label for="fincl_langsfr">French</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsgl" name="fincl_langs" value="gl"><label for="fincl_langsgl">Galician</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langska" name="fincl_langs" value="ka"><label for="fincl_langska">Georgian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsde" name="fincl_langs" value="de" checked><label for="fincl_langsde">German</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsel" name="fincl_langs" value="el"><label for="fincl_langsel">Greek</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsht" name="fincl_langs" value="ht"><label for="fincl_langsht">Haitian Creole</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsiw" name="fincl_langs" value="iw"><label for="fincl_langsiw">Hebrew</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshi" name="fincl_langs" value="hi"><label for="fincl_langshi">Hindi</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshu" name="fincl_langs" value="hu"><label for="fincl_langshu">Hungarian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsis" name="fincl_langs" value="is"><label for="fincl_langsis">Icelandic</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsid" name="fincl_langs" value="id"><label for="fincl_langsid">Indonesian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsga" name="fincl_langs" value="ga"><label for="fincl_langsga">Irish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsit" name="fincl_langs" value="it" checked><label for="fincl_langsit">Italian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsja" name="fincl_langs" value="ja"><label for="fincl_langsja">Japanese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsko" name="fincl_langs" value="ko"><label for="fincl_langsko">Korean</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langslv" name="fincl_langs" value="lv"><label for="fincl_langslv">Latvian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langslt" name="fincl_langs" value="lt"><label for="fincl_langslt">Lithuanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsmk" name="fincl_langs" value="mk"><label for="fincl_langsmk">Macedonian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsms" name="fincl_langs" value="ms"><label for="fincl_langsms">Malay</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsmt" name="fincl_langs" value="mt"><label for="fincl_langsmt">Maltese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsno" name="fincl_langs" value="no"><label for="fincl_langsno">Norwegian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfa" name="fincl_langs" value="fa"><label for="fincl_langsfa">Persian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langspl" name="fincl_langs" value="pl"><label for="fincl_langspl">Polish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langspt" name="fincl_langs" value="pt" checked><label for="fincl_langspt">Portuguese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsro" name="fincl_langs" value="ro"><label for="fincl_langsro">Romanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsru" name="fincl_langs" value="ru" checked><label for="fincl_langsru">Russian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssr" name="fincl_langs" value="sr"><label for="fincl_langssr">Serbian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssk" name="fincl_langs" value="sk"><label for="fincl_langssk">Slovak</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssl" name="fincl_langs" value="sl"><label for="fincl_langssl">Slovenian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langses" name="fincl_langs" value="es" checked><label for="fincl_langses">Spanish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssw" name="fincl_langs" value="sw"><label for="fincl_langssw">Swahili</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssv" name="fincl_langs" value="sv"><label for="fincl_langssv">Swedish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsth" name="fincl_langs" value="th"><label for="fincl_langsth">Thai</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langstr" name="fincl_langs" value="tr"><label for="fincl_langstr">Turkish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsuk" name="fincl_langs" value="uk"><label for="fincl_langsuk">Ukrainian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsur" name="fincl_langs" value="ur"><label for="fincl_langsur">Urdu</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsvi" name="fincl_langs" value="vi"><label for="fincl_langsvi">Vietnamese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscy" name="fincl_langs" value="cy"><label for="fincl_langscy">Welsh</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsyi" name="fincl_langs" value="yi"><label for="fincl_langsyi">Yiddish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsaf" name="fincl_langs[]" value="af"><label for="fincl_langsaf">Afrikaans</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssq" name="fincl_langs[]" value="sq"><label for="fincl_langssq">Albanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsar" name="fincl_langs[]" value="ar"><label for="fincl_langsar">Arabic</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshy" name="fincl_langs[]" value="hy"><label for="fincl_langshy">Armenian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsaz" name="fincl_langs[]" value="az"><label for="fincl_langsaz">Azerbaijani</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langseu" name="fincl_langs[]" value="eu"><label for="fincl_langseu">Basque</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsbe" name="fincl_langs[]" value="be"><label for="fincl_langsbe">Belarusian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsbg" name="fincl_langs[]" value="bg"><label for="fincl_langsbg">Bulgarian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsca" name="fincl_langs[]" value="ca"><label for="fincl_langsca">Catalan</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langszh-CN" name="fincl_langs[]" value="zh-CN"><label for="fincl_langszh-CN">Chinese (Simplified)</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langszh-TW" name="fincl_langs[]" value="zh-TW"><label for="fincl_langszh-TW">Chinese (Traditional)</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshr" name="fincl_langs[]" value="hr"><label for="fincl_langshr">Croatian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscs" name="fincl_langs[]" value="cs"><label for="fincl_langscs">Czech</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsda" name="fincl_langs[]" value="da"><label for="fincl_langsda">Danish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsnl" name="fincl_langs[]" value="nl"><label for="fincl_langsnl">Dutch</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsen" name="fincl_langs[]" value="en" checked><label for="fincl_langsen">English</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langset" name="fincl_langs[]" value="et"><label for="fincl_langset">Estonian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langstl" name="fincl_langs[]" value="tl"><label for="fincl_langstl">Filipino</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfi" name="fincl_langs[]" value="fi"><label for="fincl_langsfi">Finnish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfr" name="fincl_langs[]" value="fr" checked><label for="fincl_langsfr">French</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsgl" name="fincl_langs[]" value="gl"><label for="fincl_langsgl">Galician</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langska" name="fincl_langs[]" value="ka"><label for="fincl_langska">Georgian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsde" name="fincl_langs[]" value="de" checked><label for="fincl_langsde">German</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsel" name="fincl_langs[]" value="el"><label for="fincl_langsel">Greek</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsht" name="fincl_langs[]" value="ht"><label for="fincl_langsht">Haitian Creole</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsiw" name="fincl_langs[]" value="iw"><label for="fincl_langsiw">Hebrew</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshi" name="fincl_langs[]" value="hi"><label for="fincl_langshi">Hindi</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langshu" name="fincl_langs[]" value="hu"><label for="fincl_langshu">Hungarian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsis" name="fincl_langs[]" value="is"><label for="fincl_langsis">Icelandic</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsid" name="fincl_langs[]" value="id"><label for="fincl_langsid">Indonesian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsga" name="fincl_langs[]" value="ga"><label for="fincl_langsga">Irish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsit" name="fincl_langs[]" value="it" checked><label for="fincl_langsit">Italian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsja" name="fincl_langs[]" value="ja"><label for="fincl_langsja">Japanese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsko" name="fincl_langs[]" value="ko"><label for="fincl_langsko">Korean</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langslv" name="fincl_langs[]" value="lv"><label for="fincl_langslv">Latvian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langslt" name="fincl_langs[]" value="lt"><label for="fincl_langslt">Lithuanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsmk" name="fincl_langs[]" value="mk"><label for="fincl_langsmk">Macedonian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsms" name="fincl_langs[]" value="ms"><label for="fincl_langsms">Malay</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsmt" name="fincl_langs[]" value="mt"><label for="fincl_langsmt">Maltese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsno" name="fincl_langs[]" value="no"><label for="fincl_langsno">Norwegian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsfa" name="fincl_langs[]" value="fa"><label for="fincl_langsfa">Persian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langspl" name="fincl_langs[]" value="pl"><label for="fincl_langspl">Polish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langspt" name="fincl_langs[]" value="pt" checked><label for="fincl_langspt">Portuguese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsro" name="fincl_langs[]" value="ro"><label for="fincl_langsro">Romanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsru" name="fincl_langs[]" value="ru" checked><label for="fincl_langsru">Russian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssr" name="fincl_langs[]" value="sr"><label for="fincl_langssr">Serbian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssk" name="fincl_langs[]" value="sk"><label for="fincl_langssk">Slovak</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssl" name="fincl_langs[]" value="sl"><label for="fincl_langssl">Slovenian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langses" name="fincl_langs[]" value="es" checked><label for="fincl_langses">Spanish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssw" name="fincl_langs[]" value="sw"><label for="fincl_langssw">Swahili</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langssv" name="fincl_langs[]" value="sv"><label for="fincl_langssv">Swedish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsth" name="fincl_langs[]" value="th"><label for="fincl_langsth">Thai</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langstr" name="fincl_langs[]" value="tr"><label for="fincl_langstr">Turkish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsuk" name="fincl_langs[]" value="uk"><label for="fincl_langsuk">Ukrainian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsur" name="fincl_langs[]" value="ur"><label for="fincl_langsur">Urdu</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsvi" name="fincl_langs[]" value="vi"><label for="fincl_langsvi">Vietnamese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langscy" name="fincl_langs[]" value="cy"><label for="fincl_langscy">Welsh</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="fincl_langsyi" name="fincl_langs[]" value="yi"><label for="fincl_langsyi">Yiddish</label><br />
                 </div>
                 </td>
             </tr>
@@ -458,64 +468,64 @@ EOT;
                 <td class="option_name">Dropdown languages:</td>
                 <td>
                 <div style="height:55px;overflow-y:scroll;">
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaf" name="incl_langs" value="af" checked><label for="incl_langsaf">Afrikaans</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssq" name="incl_langs" value="sq" checked><label for="incl_langssq">Albanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsar" name="incl_langs" value="ar" checked><label for="incl_langsar">Arabic</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshy" name="incl_langs" value="hy" checked><label for="incl_langshy">Armenian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaz" name="incl_langs" value="az" checked><label for="incl_langsaz">Azerbaijani</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseu" name="incl_langs" value="eu" checked><label for="incl_langseu">Basque</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbe" name="incl_langs" value="be" checked><label for="incl_langsbe">Belarusian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbg" name="incl_langs" value="bg" checked><label for="incl_langsbg">Bulgarian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsca" name="incl_langs" value="ca" checked><label for="incl_langsca">Catalan</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-CN" name="incl_langs" value="zh-CN" checked><label for="incl_langszh-CN">Chinese (Simplified)</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-TW" name="incl_langs" value="zh-TW" checked><label for="incl_langszh-TW">Chinese (Traditional)</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshr" name="incl_langs" value="hr" checked><label for="incl_langshr">Croatian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscs" name="incl_langs" value="cs" checked><label for="incl_langscs">Czech</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsda" name="incl_langs" value="da" checked><label for="incl_langsda">Danish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsnl" name="incl_langs" value="nl" checked><label for="incl_langsnl">Dutch</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsen" name="incl_langs" value="en" checked><label for="incl_langsen">English</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langset" name="incl_langs" value="et" checked><label for="incl_langset">Estonian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstl" name="incl_langs" value="tl" checked><label for="incl_langstl">Filipino</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfi" name="incl_langs" value="fi" checked><label for="incl_langsfi">Finnish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfr" name="incl_langs" value="fr" checked><label for="incl_langsfr">French</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgl" name="incl_langs" value="gl" checked><label for="incl_langsgl">Galician</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langska" name="incl_langs" value="ka" checked><label for="incl_langska">Georgian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsde" name="incl_langs" value="de" checked><label for="incl_langsde">German</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsel" name="incl_langs" value="el" checked><label for="incl_langsel">Greek</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsht" name="incl_langs" value="ht" checked><label for="incl_langsht">Haitian Creole</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsiw" name="incl_langs" value="iw" checked><label for="incl_langsiw">Hebrew</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshi" name="incl_langs" value="hi" checked><label for="incl_langshi">Hindi</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshu" name="incl_langs" value="hu" checked><label for="incl_langshu">Hungarian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsis" name="incl_langs" value="is" checked><label for="incl_langsis">Icelandic</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsid" name="incl_langs" value="id" checked><label for="incl_langsid">Indonesian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsga" name="incl_langs" value="ga" checked><label for="incl_langsga">Irish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsit" name="incl_langs" value="it" checked><label for="incl_langsit">Italian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsja" name="incl_langs" value="ja" checked><label for="incl_langsja">Japanese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsko" name="incl_langs" value="ko" checked><label for="incl_langsko">Korean</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslv" name="incl_langs" value="lv" checked><label for="incl_langslv">Latvian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslt" name="incl_langs" value="lt" checked><label for="incl_langslt">Lithuanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmk" name="incl_langs" value="mk" checked><label for="incl_langsmk">Macedonian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsms" name="incl_langs" value="ms" checked><label for="incl_langsms">Malay</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmt" name="incl_langs" value="mt" checked><label for="incl_langsmt">Maltese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsno" name="incl_langs" value="no" checked><label for="incl_langsno">Norwegian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfa" name="incl_langs" value="fa" checked><label for="incl_langsfa">Persian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspl" name="incl_langs" value="pl" checked><label for="incl_langspl">Polish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspt" name="incl_langs" value="pt" checked><label for="incl_langspt">Portuguese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsro" name="incl_langs" value="ro" checked><label for="incl_langsro">Romanian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsru" name="incl_langs" value="ru" checked><label for="incl_langsru">Russian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssr" name="incl_langs" value="sr" checked><label for="incl_langssr">Serbian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssk" name="incl_langs" value="sk" checked><label for="incl_langssk">Slovak</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssl" name="incl_langs" value="sl" checked><label for="incl_langssl">Slovenian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langses" name="incl_langs" value="es" checked><label for="incl_langses">Spanish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssw" name="incl_langs" value="sw" checked><label for="incl_langssw">Swahili</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssv" name="incl_langs" value="sv" checked><label for="incl_langssv">Swedish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsth" name="incl_langs" value="th" checked><label for="incl_langsth">Thai</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstr" name="incl_langs" value="tr" checked><label for="incl_langstr">Turkish</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsuk" name="incl_langs" value="uk" checked><label for="incl_langsuk">Ukrainian</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsur" name="incl_langs" value="ur" checked><label for="incl_langsur">Urdu</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsvi" name="incl_langs" value="vi" checked><label for="incl_langsvi">Vietnamese</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscy" name="incl_langs" value="cy" checked><label for="incl_langscy">Welsh</label><br />
-                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyi" name="incl_langs" value="yi" checked><label for="incl_langsyi">Yiddish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaf" name="incl_langs[]" value="af" checked><label for="incl_langsaf">Afrikaans</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssq" name="incl_langs[]" value="sq" checked><label for="incl_langssq">Albanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsar" name="incl_langs[]" value="ar" checked><label for="incl_langsar">Arabic</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshy" name="incl_langs[]" value="hy" checked><label for="incl_langshy">Armenian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsaz" name="incl_langs[]" value="az" checked><label for="incl_langsaz">Azerbaijani</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langseu" name="incl_langs[]" value="eu" checked><label for="incl_langseu">Basque</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbe" name="incl_langs[]" value="be" checked><label for="incl_langsbe">Belarusian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsbg" name="incl_langs[]" value="bg" checked><label for="incl_langsbg">Bulgarian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsca" name="incl_langs[]" value="ca" checked><label for="incl_langsca">Catalan</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-CN" name="incl_langs[]" value="zh-CN" checked><label for="incl_langszh-CN">Chinese (Simplified)</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langszh-TW" name="incl_langs[]" value="zh-TW" checked><label for="incl_langszh-TW">Chinese (Traditional)</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshr" name="incl_langs[]" value="hr" checked><label for="incl_langshr">Croatian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscs" name="incl_langs[]" value="cs" checked><label for="incl_langscs">Czech</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsda" name="incl_langs[]" value="da" checked><label for="incl_langsda">Danish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsnl" name="incl_langs[]" value="nl" checked><label for="incl_langsnl">Dutch</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsen" name="incl_langs[]" value="en" checked><label for="incl_langsen">English</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langset" name="incl_langs[]" value="et" checked><label for="incl_langset">Estonian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstl" name="incl_langs[]" value="tl" checked><label for="incl_langstl">Filipino</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfi" name="incl_langs[]" value="fi" checked><label for="incl_langsfi">Finnish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfr" name="incl_langs[]" value="fr" checked><label for="incl_langsfr">French</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsgl" name="incl_langs[]" value="gl" checked><label for="incl_langsgl">Galician</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langska" name="incl_langs[]" value="ka" checked><label for="incl_langska">Georgian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsde" name="incl_langs[]" value="de" checked><label for="incl_langsde">German</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsel" name="incl_langs[]" value="el" checked><label for="incl_langsel">Greek</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsht" name="incl_langs[]" value="ht" checked><label for="incl_langsht">Haitian Creole</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsiw" name="incl_langs[]" value="iw" checked><label for="incl_langsiw">Hebrew</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshi" name="incl_langs[]" value="hi" checked><label for="incl_langshi">Hindi</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langshu" name="incl_langs[]" value="hu" checked><label for="incl_langshu">Hungarian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsis" name="incl_langs[]" value="is" checked><label for="incl_langsis">Icelandic</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsid" name="incl_langs[]" value="id" checked><label for="incl_langsid">Indonesian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsga" name="incl_langs[]" value="ga" checked><label for="incl_langsga">Irish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsit" name="incl_langs[]" value="it" checked><label for="incl_langsit">Italian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsja" name="incl_langs[]" value="ja" checked><label for="incl_langsja">Japanese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsko" name="incl_langs[]" value="ko" checked><label for="incl_langsko">Korean</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslv" name="incl_langs[]" value="lv" checked><label for="incl_langslv">Latvian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langslt" name="incl_langs[]" value="lt" checked><label for="incl_langslt">Lithuanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmk" name="incl_langs[]" value="mk" checked><label for="incl_langsmk">Macedonian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsms" name="incl_langs[]" value="ms" checked><label for="incl_langsms">Malay</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsmt" name="incl_langs[]" value="mt" checked><label for="incl_langsmt">Maltese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsno" name="incl_langs[]" value="no" checked><label for="incl_langsno">Norwegian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsfa" name="incl_langs[]" value="fa" checked><label for="incl_langsfa">Persian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspl" name="incl_langs[]" value="pl" checked><label for="incl_langspl">Polish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langspt" name="incl_langs[]" value="pt" checked><label for="incl_langspt">Portuguese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsro" name="incl_langs[]" value="ro" checked><label for="incl_langsro">Romanian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsru" name="incl_langs[]" value="ru" checked><label for="incl_langsru">Russian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssr" name="incl_langs[]" value="sr" checked><label for="incl_langssr">Serbian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssk" name="incl_langs[]" value="sk" checked><label for="incl_langssk">Slovak</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssl" name="incl_langs[]" value="sl" checked><label for="incl_langssl">Slovenian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langses" name="incl_langs[]" value="es" checked><label for="incl_langses">Spanish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssw" name="incl_langs[]" value="sw" checked><label for="incl_langssw">Swahili</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langssv" name="incl_langs[]" value="sv" checked><label for="incl_langssv">Swedish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsth" name="incl_langs[]" value="th" checked><label for="incl_langsth">Thai</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langstr" name="incl_langs[]" value="tr" checked><label for="incl_langstr">Turkish</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsuk" name="incl_langs[]" value="uk" checked><label for="incl_langsuk">Ukrainian</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsur" name="incl_langs[]" value="ur" checked><label for="incl_langsur">Urdu</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsvi" name="incl_langs[]" value="vi" checked><label for="incl_langsvi">Vietnamese</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langscy" name="incl_langs[]" value="cy" checked><label for="incl_langscy">Welsh</label><br />
+                <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="incl_langsyi" name="incl_langs[]" value="yi" checked><label for="incl_langsyi">Yiddish</label><br />
                 </div>
                 </td>
             </tr>
@@ -551,18 +561,19 @@ EOT;
 
         $data = get_option('GTranslate');
 
-        $data['pro_version'] = $_POST['pro_version'];
-        $data['new_window'] = $_POST['new_window'];
-        $data['analytics'] = $_POST['analytics'];
-        $data['load_jquery'] = $_POST['load_jquery'];
+        $data['pro_version'] = isset($_POST['pro_version']) ? $_POST['pro_version'] : '';
+        $data['new_window'] = isset($_POST['new_window']) ? $_POST['new_window'] : '';
+        $data['analytics'] = isset($_POST['analytics']) ? $_POST['analytics'] : '';
+        $data['load_jquery'] = isset($_POST['load_jquery']) ? $_POST['load_jquery'] : '';
+        $data['add_new_line'] = isset($_POST['add_new_line']) ? $_POST['add_new_line'] : '';
+        $data['show_dropdown'] = isset($_POST['show_dropdown']) ? $_POST['show_dropdown'] : '';
+        $data['show_flags'] = isset($_POST['show_flags']) ? $_POST['show_flags'] : '';
         $data['default_language'] = $_POST['default_language'];
         $data['translation_method'] = $_POST['translation_method'];
-        $data['show_flags'] = $_POST['show_flags'];
         $data['flag_size'] = $_POST['flag_size'];
-        $data['add_new_line'] = $_POST['add_new_line'];
-        $data['show_dropdown'] = $_POST['show_dropdown'];
-
         $data['widget_code'] = stripslashes($_POST['widget_code']);
+        $data['incl_langs'] = $_POST['incl_langs'];
+        $data['fincl_langs'] = $_POST['fincl_langs'];
 
         echo '<p style="color:red;">Changes Saved</p>';
         update_option('GTranslate', $data);
@@ -580,5 +591,7 @@ EOT;
         $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'on_fly';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
         $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
+        $data['incl_langs'] = isset($data['incl_langs']) ? $data['incl_langs'] : array();
+        $data['fincl_langs'] = isset($data['fincl_langs']) ? $data['fincl_langs'] : array();
     }
 }

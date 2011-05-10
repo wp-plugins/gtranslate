@@ -95,7 +95,7 @@ class GTranslate extends WP_Widget {
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
-            return $data['widget_code'];
+            return $data['widget_code'].'<img src="http://g-stats.appspot.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
     }
 
     function register() {

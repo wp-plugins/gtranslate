@@ -11,7 +11,7 @@ Get translations with a single click between 58 languages (more than 98% of inte
 
 == Description ==
 
-This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.
+This module uses Google Translate [automatic translation](http://edo.webmaster.am/gtranslate?xyz=998) service to [translate your web page](http://edo.webmaster.am/gtranslate?xyz=998) with Google power. With 58 available languages your site will be available to more than 98% of internet users.
 
 Visit [GTranslate Pro](http://edo.webmaster.am/gtranslate?xyz=998) for more details and features like `translation editing`, `search engine indexing` and `SEO URLs`.
 
@@ -26,9 +26,9 @@ Please `use` [GTranslate Forum](http://edo.webmaster.am/forum/gtranslate/) for y
 * Option to translate the page on fly
 * Available styles Dropdown/Flags/flags with dropdown
 * Valid XHTML
-* Option to operate with [Pro version](http://edo.webmaster.am/gtranslate?xyz=998) to have SEF URLs, refine/edit translations manually and index translated pages in search engines
+* Option to operate with [Pro version](http://edo.webmaster.am/gtranslate?xyz=998) to have SEF URLs, refine/edit translations manually and [index translated pages](http://edo.webmaster.am/gtranslate?xyz=998) in search engines
 
-Keywords: google translation, google translate, google translator, automatic translator, automatic translation, ajax translator, ajax translate, jquery translator, jquery translate
+Keywords: [website translation](http://edo.webmaster.am/gtranslate?xyz=998), [automatic website translation](http://edo.webmaster.am/gtranslate?xyz=998), [google translation](http://edo.webmaster.am/gtranslate?xyz=998), [google translate](http://edo.webmaster.am/gtranslate?xyz=998), [google translator](http://edo.webmaster.am/gtranslate?xyz=998), [automatic translator](http://edo.webmaster.am/gtranslate?xyz=998), [automatic translation](http://edo.webmaster.am/gtranslate?xyz=998), [ajax translator](http://edo.webmaster.am/gtranslate?xyz=998), [ajax translate](http://edo.webmaster.am/gtranslate?xyz=998), [jquery translator](http://edo.webmaster.am/gtranslate?xyz=998), [jquery translate](http://edo.webmaster.am/gtranslate?xyz=998)
 
 == Installation ==
 

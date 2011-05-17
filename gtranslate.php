@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://edo.webmaster.am/forum/gtranslate/">GTranslate Forum</a>.
-Version: 1.0.20
+Version: 1.0.21
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -85,7 +85,7 @@ class GTranslate extends WP_Widget {
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
-        echo '<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
+        //echo '<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
     }
 
     function get_widget_code($atts) {
@@ -95,7 +95,8 @@ class GTranslate extends WP_Widget {
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
-            return $data['widget_code'].'<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
+            return $data['widget_code'];
+            //.'<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
     }
 
     function register() {

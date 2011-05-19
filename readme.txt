@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.1
-Stable tag: 1.0.21
+Stable tag: 1.0.22
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -62,6 +62,10 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.22 =
+* Bug fixed with language change in Pro mode
+* Added noscript tag
 
 = 1.0.21 =
 * Statistics collector temporarily disabled
@@ -135,3 +139,8 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 
 = 1.0.0 =
 * Initial version for WordPress
+
+== Upgrade Notice ==
+
+= 1.0.22 =
+Users are highly recommended to upgrade to this version!

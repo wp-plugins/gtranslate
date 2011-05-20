@@ -66,9 +66,11 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults(& $data);
         $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 
-        if($data['translation_method'] == 'on_fly' and $data['load_jquery'] and !is_admin()) {
-            wp_enqueue_script('jquery');
-            wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js', array('jquery'));
+        if($data['translation_method'] == 'on_fly' and !is_admin()) {
+            if($data['load_jquery'])
+                wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js', array('jquery'));
+            else
+                wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js');
         }
 
         wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');

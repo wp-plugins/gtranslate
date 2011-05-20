@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://edo.webmaster.am/forum/gtranslate/">GTranslate Forum</a>.
-Version: 1.0.22
+Version: 1.0.23
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 

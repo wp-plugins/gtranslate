@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.1
-Stable tag: 1.0.23
+Stable tag: 1.0.24
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -62,6 +62,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.24 =
+* Tracking added for collecting statistics
 
 = 1.0.23 =
 * Bug fixed with javascript jquery loading option

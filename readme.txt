@@ -4,12 +4,14 @@ Author: Edvard Ananyan
 Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
-Tested up to: 3.1
+Tested up to: 3.2
 Stable tag: 1.0.24
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
 == Description ==
+
+![GTranslate](http://edo.webmaster.am/style/images/gtranslate_logo.png "GTranslate")
 
 This module uses Google Translate [automatic translation](http://edo.webmaster.am/gtranslate?xyz=998) service to [translate your web page](http://edo.webmaster.am/gtranslate?xyz=998) with Google power. With 58 available languages your site will be available to more than 98% of internet users.
 

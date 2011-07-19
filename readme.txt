@@ -5,7 +5,7 @@ Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.2
-Stable tag: 1.0.24
+Stable tag: 1.0.25
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 

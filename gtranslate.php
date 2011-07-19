@@ -88,7 +88,7 @@ class GTranslate extends WP_Widget {
             echo $data['widget_code'];
         echo $args['after_widget'];
         //echo '<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
-        echo '<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">machine translation</a></noscript>';
+        echo '<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">free translation</a></noscript>';
     }
 
     function get_widget_code($atts) {
@@ -98,7 +98,7 @@ class GTranslate extends WP_Widget {
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
-            return $data['widget_code'].'<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">machine translation</a></noscript>';
+            return $data['widget_code'].'<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">free translation</a></noscript>';
             //.'<img src="http://cmshippo.com/gstats.png" width="0" height="0" alt="g-stats" class="gstats" />';
     }
 

@@ -63,6 +63,10 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 
 == Changelog ==
 
+= 1.0.25 =
+* Fixed installation notification on update event
+* Removed unnecessary commented code
+
 = 1.0.24 =
 * Tracking added for collecting statistics
 

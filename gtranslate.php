@@ -120,7 +120,7 @@ class GTranslate extends WP_Widget {
         $data = get_option('GTranslate');
         GTranslate::load_defaults(& $data);
 
-        $site_url = get_option('siteurl');
+        $site_url = site_url();
 
         extract($data);
 
@@ -283,7 +283,7 @@ foreach($incl_langs as $lang)
 foreach($fincl_langs as $lang)
     $script .= "jQuery('#fincl_langs$lang').attr('checked', true);\n";
 ?>
-        <form id="gtranslate" name="form1" method="post" action="<?php echo get_option('siteurl') . '/wp-admin/options-general.php?page=gtranslate_options' ?>">
+        <form id="gtranslate" name="form1" method="post" action="<?php echo admin_url() . '/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
         <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate?xyz=998" target="_blank">GTranslate Pro</a> version.</p>
         <div style="float:left;width:270px;">

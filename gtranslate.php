@@ -69,7 +69,7 @@ class GTranslate extends WP_Widget {
         wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');
     }
 
-    function widget($args) {
+    function widget($args, $instance) {
         $data = get_option('GTranslate');
         GTranslate::load_defaults($data);
 

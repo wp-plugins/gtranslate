@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.0.37
+Stable tag: 1.0.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.38 =
+* Fix for flags display with some templates
 
 = 1.0.37 =
 * Bug fixed with new versions of PHP

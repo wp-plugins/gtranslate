@@ -29,13 +29,8 @@ Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions
 **Watch GTranslate Tour**
 [vimeo http://vimeo.com/30132555]
 
-== Installation ==
+= Google Translate Wiki =
 
-1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. You can add a widget to your website or use [GTranslate] syntax inside pages where you want it to appear.
-
-== Google Translate history ==
 Google Translate is a multilingual service provided by Google to translate written text from one language into another. It supports 90 languages.
 
 Before October 2007, for languages other than Arabic, Chinese and Russian, Google Translate was based on SYSTRAN, a software engine which is still used by several other online translation services such as Yahoo! Babel Fish, AOL, and Yahoo. Since October 2007, Google Translate has used proprietary, in-house technology based on statistical machine translation instead.
@@ -82,6 +77,43 @@ Texts written in the Greek, Devanagari, Cyrillic and Arabic scripts can be trans
 
 Many of the more popular languages have a "text-to-speech" audio function that is able to read back a text in that language, up to a few dozen words or so. In the case of pluricentric languages, the accent depends on the region: for English, in the Americas, most of the Asia-Pacific and West Asia the audio uses a female General American accent, whereas in Europe, Hong Kong, Malaysia, Singapore, Guyana and all other parts of the world a female British English accent is used, except for a special Oceania accent used in Australia, New Zealand and Norfolk lsland; for Spanish, in the Americas a Latin American Spanish accent is used, while in the other parts of the world a Castilian Spanish accent is used; Portuguese uses a Sao Paulo accent in the world, except for Portugal, where their native accent is used. Some less widely spoken languages use the open-source eSpeak synthesizer for their speech; producing a robotic, awkward voice that may be difficult to understand.
 
+= Translation methodology =
+Google Translate does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis. The system's original creator, Franz Josef Och, has criticized the effectiveness of rule-based algorithms in favor of statistical approaches. It is based on a method called statistical machine translation, and more specifically, on research by Och who won the DARPA contest for speed machine translation in 2003. Och was the head of Google's machine translation group until leaving to join Human Longevity, Inc. in July 2014.
+
+Google Translate does not translate from one language to another (L1 -> L2). Instead, it often translates first to English and then to the target language (L1 -> EN -> L2). However, because English, like all human languages, is ambiguous and depends on context, this can cause translation errors.
+
+The following languages do not have a direct Google translation to or from English. These languages are translated through the indicated intermediate language (which in all cases is closely related to the desired language but more widely spoken) in addition to through English:[citation needed]
+
+Belarusian (be <-> ru <-> en <-> other);
+Catalan (ca <-> es <-> en <-> other);
+Galician (gl <-> pt <-> en <-> other);
+Haitian Creole (ht <-> fr <-> en <-> other);
+Slovak (sk <-> cs <-> en <-> other);
+Ukrainian (uk <-> ru <-> en <-> other);
+Urdu (ur <-> hi <-> en <-> other).
+According to Och, a solid base for developing a usable statistical machine translation system for a new pair of languages from scratch would consist of a bilingual text corpus (or parallel collection) of more than 150-200 million words, and two monolingual corpora each of more than a billion words. Statistical models from these data are then used to translate between those languages.
+
+To acquire this huge amount of linguistic data, Google used United Nations documents. The UN typically publishes documents in all six official UN languages, which has produced a very large 6-language corpus.
+
+Google representatives have been involved with domestic conferences in Japan where Google has solicited bilingual data from researchers.
+
+When Google Translate generates a translation, it looks for patterns in hundreds of millions of documents to help decide on the best translation. By detecting patterns in documents that have already been translated by human translators, Google Translate makes intelligent guesses (AI) as to what an appropriate translation should be.
+
+= Reviews =
+Shortly after launching the translation service, Google won an international competition for English <-> Arabic and English <-> Chinese machine translation.
+
+**Translation mistakes and oddities**
+
+Since Google Translate uses statistical matching to translate, translated text can often include apparently nonsensical and obvious errors, often swapping common terms for similar but nonequivalent common terms in the other language, as well as inverting sentence meaning.[citation needed] Also, for the speech, it uses only European French as well as Latin American Spanish worldwide, but both Portugal and Brazilian Portuguese (European for translate.google.pt and Brazilian for all other Google Translate sites).
+
+== Installation ==
+
+1. Upload `gtranslate` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. You can add a widget to your website or use [GTranslate] syntax inside pages where you want it to appear.
+
+== Google Translate history ==
+
 = Supported languages =
 **1st stage**
 
@@ -121,7 +153,7 @@ Many of the more popular languages have a "text-to-speech" audio function that i
 * English to and from Dutch
 * English to and from Greek
 
-*9th stage**
+**9th stage**
 
 * English to and from Hindi
 
@@ -340,35 +372,6 @@ Languages not yet supported by Google Translate, but in process.
 * Uighur
 * Wolof
 * Xhosa
-
-= Translation methodology =
-Google Translate does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis. The system's original creator, Franz Josef Och, has criticized the effectiveness of rule-based algorithms in favor of statistical approaches. It is based on a method called statistical machine translation, and more specifically, on research by Och who won the DARPA contest for speed machine translation in 2003. Och was the head of Google's machine translation group until leaving to join Human Longevity, Inc. in July 2014.
-
-Google Translate does not translate from one language to another (L1 -> L2). Instead, it often translates first to English and then to the target language (L1 -> EN -> L2). However, because English, like all human languages, is ambiguous and depends on context, this can cause translation errors.
-
-The following languages do not have a direct Google translation to or from English. These languages are translated through the indicated intermediate language (which in all cases is closely related to the desired language but more widely spoken) in addition to through English:[citation needed]
-
-Belarusian (be <-> ru <-> en <-> other);
-Catalan (ca <-> es <-> en <-> other);
-Galician (gl <-> pt <-> en <-> other);
-Haitian Creole (ht <-> fr <-> en <-> other);
-Slovak (sk <-> cs <-> en <-> other);
-Ukrainian (uk <-> ru <-> en <-> other);
-Urdu (ur <-> hi <-> en <-> other).
-According to Och, a solid base for developing a usable statistical machine translation system for a new pair of languages from scratch would consist of a bilingual text corpus (or parallel collection) of more than 150-200 million words, and two monolingual corpora each of more than a billion words. Statistical models from these data are then used to translate between those languages.
-
-To acquire this huge amount of linguistic data, Google used United Nations documents. The UN typically publishes documents in all six official UN languages, which has produced a very large 6-language corpus.
-
-Google representatives have been involved with domestic conferences in Japan where Google has solicited bilingual data from researchers.
-
-When Google Translate generates a translation, it looks for patterns in hundreds of millions of documents to help decide on the best translation. By detecting patterns in documents that have already been translated by human translators, Google Translate makes intelligent guesses (AI) as to what an appropriate translation should be.
-
-
-= Reviews =
-Shortly after launching the translation service, Google won an international competition for English<->Arabic and English<->Chinese machine translation.
-
-Translation mistakes and oddities[edit]
-Since Google Translate uses statistical matching to translate, translated text can often include apparently nonsensical and obvious errors, often swapping common terms for similar but nonequivalent common terms in the other language, as well as inverting sentence meaning.[citation needed] Also, for the speech, it uses only European French as well as Latin American Spanish worldwide, but both Portugal and Brazilian Portuguese (European for translate.google.pt and Brazilian for all other Google Translate sites).
 
 == Frequently Asked Questions ==
 

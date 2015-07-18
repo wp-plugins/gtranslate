@@ -1,18 +1,18 @@
 === GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
+Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator, language translator, google translator, language translate, google language translator, translation, translate, multi language
 Requires at least: 2.8
-Tested up to: 4.1
+Tested up to: 4.3
 Stable tag: 1.0.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
+GTranslate uses Google Translate power to make your website multilingual and available to more than 98% of internet users.
 
 == Description ==
 
-This module uses Google Translate automatic translation service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.
+This module uses Google Translate automatic translation service to translate your web page with Google power. With 81 available languages your site will be available to more than 98% of internet users.
 
 Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions and support requests!
 
@@ -38,6 +38,8 @@ Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions
 == Configuration ==
 
 To configure the widget go to Settings -> GTranslate
+
+
 
 == Frequently Asked Questions ==
 

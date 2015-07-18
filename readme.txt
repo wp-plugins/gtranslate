@@ -37,8 +37,7 @@ Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions
 
 == Configuration ==
 
-To configure the widget go to Settings -> GTranslate
-
+= Google Translate history =
 Google Translate is a multilingual service provided by Google to translate written text from one language into another. It supports 90 languages.
 
 Before October 2007, for languages other than Arabic, Chinese and Russian, Google Translate was based on SYSTRAN, a software engine which is still used by several other online translation services such as Yahoo! Babel Fish, AOL, and Yahoo. Since October 2007, Google Translate has used proprietary, in-house technology based on statistical machine translation instead.
@@ -52,14 +51,16 @@ Google Translate offers a web interface, mobile interfaces for Android and iOS, 
 
 In the web interface, users can suggest alternate translations, such as for technical terms, or correct mistakes. These suggestions are included in future updates to the translation process. If a user enters a URL in the source text, Google Translate will produce a hyperlink to a machine translation of the website. For some languages, text can be entered via an on-screen keyboard, handwriting recognition, or speech recognition.[10] It is possible to enter searches in a source language that are first translated to a destination language allowing one to browse and interpret results from the selected destination language in the source language. In 2015 the application gained the ability to translate text in real time using the device's camera, as a result of Google's acquisition of the Word Lens app.[11]
 
-* Browser integration
+**Browser integration**
+
 Google Translate is available in some browsers as an extension which can translate.
 
 A number of Firefox extensions exist for Google services, and likewise for Google Translate, which allow right-click command access to the translation service.[12]
 
 An extension for Google's Chrome browser also exists;[13] in February 2010, Google Translate was integrated into the standard Google Chrome browser for automatic webpage translation.[14][15]
 
-* Android version
+**Android version**
+
 Google Translate is available as a free downloadable application for Android OS users. The first version was launched in January 2010. It works simply like the browser version. Google translation for Android contains two main options: "SMS translation" and "History".
 
 An early 2011 version supported Conversation Mode when translating between English and Spanish (in alpha testing). This interface within Google Translate allows users to communicate fluidly with a nearby person in another language. In October 2011 it was expanded to 14 languages.[16]
@@ -70,7 +71,8 @@ The 'Camera input' functionality allows users to take a photograph of a document
 
 Latest version: 2.0.0 build 42.
 
-* iOS version
+**iOS version**
+
 In August 2008, Google launched a Google Translate HTML5 web application for iOS for iPhone and iPod Touch users. The official iOS app for Google Translate was released February 8, 2011. It accepts voice input for 15 languages and allows translation of a word or phrase into one of more than 50 languages. Translations can be spoken out loud in 23 different languages.[19]
 
 = Limitations =
@@ -83,157 +85,194 @@ Texts written in the Greek, Devanagari, Cyrillic and Arabic scripts can be trans
 Many of the more popular languages have a "text-to-speech" audio function that is able to read back a text in that language, up to a few dozen words or so. In the case of pluricentric languages, the accent depends on the region: for English, in the Americas, most of the Asia-Pacific and West Asia the audio uses a female General American accent, whereas in Europe, Hong Kong, Malaysia, Singapore, Guyana and all other parts of the world a female British English accent is used, except for a special Oceania accent used in Australia, New Zealand and Norfolk lsland; for Spanish, in the Americas a Latin American Spanish accent is used, while in the other parts of the world a Castilian Spanish accent is used; Portuguese uses a São Paulo accent in the world, except for Portugal, where their native accent is used. Some less widely spoken languages use the open-source eSpeak synthesizer for their speech; producing a robotic, awkward voice that may be difficult to understand.
 
 = Supported languages =
-1st stage
-English to and from German
-English to and from Spanish
-English to and from French
-2nd stage
-English to and from Portuguese
-3rd stage
-English to and from Italian
-4th stage
-English to and from Chinese (Simplified)
-English to and from Japanese
-English to and from Korean
-5th stage (launched April 28, 2006)[25]
-English to and from Arabic
-6th stage (launched December 16, 2006)
-English to and from Russian
-7th stage (launched February 9, 2007)
-English to and from Chinese (Traditional)
-Chinese (Simplified to and from Traditional)
-8th stage (all 25 language pairs use Google's machine translation system) (launched October 22, 2007)
-English to and from Dutch
-English to and from Greek
-9th stage
-English to and from Hindi
-10th stage (as of this stage, translation can be done between any two languages, using English as an intermediate step, if needed) (launched May 8, 2008)
-Bulgarian
-Croatian
-Czech
-Danish
-Finnish
-Norwegian
-Polish
-Romanian
-Swedish
-11th stage (launched September 25, 2008)
-Catalan
-Filipino
-Hebrew
-Indonesian
-Latvian
-Lithuanian
-Serbian
-Slovak
-Slovene
-Ukrainian
-Vietnamese
-12th stage (launched January 30, 2009)
-Albanian
-Estonian
-Galician
-Hungarian
-Maltese
-Thai
-Turkish
-13th stage (launched June 19, 2009)
-Persian
-14th stage (launched August 24, 2009)
-Afrikaans
-Belarusian
-Icelandic
-Irish
-Macedonian
-Malay
-Swahili
-Welsh
-Yiddish
-15th stage (launched November 19, 2009)
-The Beta stage is finished. Users can now choose to have the romanization written for Chinese, Japanese, Korean, Russian, Ukrainian, Belarusian, Bulgarian, Greek, Hindi and Thai. For translations from Arabic, Persian and Hindi, the user can enter a Latin transliteration of the text and the text will be transliterated to the native script for these languages as the user is typing. The text can now be read by a text-to-speech program in English, Italian, French and German.
-16th stage (launched January 30, 2010)
-Haitian Creole
-17th stage (launched April 2010)
-Speech program launched in Hindi and Spanish.
-18th stage (launched May 5, 2010)
-Speech program launched in Afrikaans, Albanian, Catalan, Chinese (Mandarin), Croatian, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Icelandic, Indonesian, Latvian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Swahili, Swedish, Turkish, Vietnamese and Welsh (based on eSpeak)[26]
-19th stage (launched May 13, 2010)[27]
-Armenian
-Azerbaijani
-Basque
-Georgian
-Urdu
-20th stage (launched June 2010)
-Provides romanization for Arabic.
-21st stage (launched September 2010)
-Allows phonetic typing for Arabic, Greek, Hindi, Persian, Russian, Serbian and Urdu.
-Latin[28]
-22nd stage (launched December 2010)
-Romanization of Arabic removed.
-Spell check added.
-For some languages, Google replaced text-to-speech synthesizers from eSpeak's robot voice to native speaker's nature voice technologies made by SVOX[29] (Chinese, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Norwegian, Polish, Portuguese, Russian, Swedish, Turkish). Also the old versions of French, German, Italian and Spanish. Latin uses the same synthesizer as Italian.
-Speech program launched in Arabic, Japanese and Korean.
-23rd stage (launched January 2011)
-Choice of different translations for a word.
-24th stage (Launched June 2011)
-5 new Indic languages (in alpha) and a transliterated input method:[30]
-Bengali
-Gujarati
-Kannada
-Tamil
-Telugu
-25th stage (launched July 2011)
-Translation rating introduced.
-26th stage (launched January 2012)
-Dutch male voice synthesizer replaced with female.
-Elena by SVOX replaced the Slovak eSpeak voice.
-Transliteration of Yiddish added.
-27th stage (launched February 2012)
-Speech program launched in Thai.
-Esperanto
-28th stage (launched September 2012)
-Lao
-29th stage (launched October 2012)
-Transliteration of Lao added. (Alpha status)[31][32]
-30th stage (launched October 2012)
-New speech program launched in English.
-31st stage (launched November 2012)
-New speech program in French, Spanish, Italian and German.
-32nd stage (launched March 2013)
-Phrasebook added.
-33rd stage (launched April 2013)
-Khmer
-34th stage (launched May 2013)
-Bosnian
-Cebuano
-Hmong
-Javanese
-Marathi
-35th stage (launched May 2013)
-16 additional languages can be used with camera-input: Bulgarian, Catalan, Danish, Estonian, Finnish, Croatian, Hungarian, Indonesian, Icelandic, Lithuanian, Latvian, Norwegian, Romanian, Slovak, Slovenian and Swedish.
-36th stage (launched December 2013)
-Hausa
-Igbo
-Maori
-Mongolian
-Nepali
-Punjabi
-Somali
-Yoruba
-Zulu
-37th stage (launched June 2014)
-Definition of words added.
-38th stage (launched December 2014)
-Chichewa
-Kazakh
-Malagasy
-Malayalam
-Myanmar (Burmese)
-Sesotho
-Sinhala
-Sundanese
-Tajik
-Uzbek
+**1st stage**
+*English to and from German
+*English to and from Spanish
+*English to and from French
+
+**2nd stage**
+*English to and from Portuguese
+
+**3rd stage**
+*English to and from Italian
+
+**4th stage**
+*English to and from Chinese (Simplified)
+*English to and from Japanese
+*English to and from Korean
+
+**5th stage (launched April 28, 2006)[25]**
+*English to and from Arabic
+
+**6th stage (launched December 16, 2006)**
+*English to and from Russian
+
+**7th stage (launched February 9, 2007)**
+*English to and from Chinese (Traditional)
+*Chinese (Simplified to and from Traditional)
+
+**8th stage (all 25 language pairs use Google's machine translation system) (launched October 22, 2007)**
+*English to and from Dutch
+*English to and from Greek
+
+*9th stage**
+*English to and from Hindi
+
+**10th stage (as of this stage, translation can be done between any two languages, using English as an intermediate step, if needed) (launched May 8, 2008)**
+*Bulgarian
+*Croatian
+*Czech
+*Danish
+*Finnish
+*Norwegian
+*Polish
+*Romanian
+*Swedish
+
+**11th stage (launched September 25, 2008)**
+*Catalan
+*Filipino
+*Hebrew
+*Indonesian
+*Latvian
+*Lithuanian
+*Serbian
+*Slovak
+*Slovene
+*Ukrainian
+*Vietnamese
+
+**12th stage (launched January 30, 2009)**
+*Albanian
+*Estonian
+*Galician
+*Hungarian
+*Maltese
+*Thai
+*Turkish
+
+**13th stage (launched June 19, 2009)**
+*Persian
+
+**14th stage (launched August 24, 2009)**
+*Afrikaans
+*Belarusian
+*Icelandic
+*Irish
+*Macedonian
+*Malay
+*Swahili
+*Welsh
+*Yiddish
+
+**15th stage (launched November 19, 2009)**
+*The Beta stage is finished. Users can now choose to have the romanization written for Chinese, Japanese, Korean, Russian, Ukrainian, Belarusian, Bulgarian, Greek, Hindi and Thai. For translations from Arabic, Persian and Hindi, the user can enter a Latin transliteration of the text and the text will be transliterated to the native script for these languages as the user is typing. The text can now be read by a text-to-speech program in English, Italian, French and German.
+
+**16th stage (launched January 30, 2010)**
+*Haitian Creole
+
+**17th stage (launched April 2010)**
+*Speech program launched in Hindi and Spanish.
+
+*18th stage (launched May 5, 2010)**
+*Speech program launched in Afrikaans, Albanian, Catalan, Chinese (Mandarin), Croatian, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Icelandic, Indonesian, Latvian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Swahili, Swedish, Turkish, Vietnamese and Welsh (based on eSpeak)[26]
+
+**19th stage (launched May 13, 2010)[27]**
+*Armenian
+*Azerbaijani
+*Basque
+*Georgian
+*Urdu
+
+**20th stage (launched June 2010)**
+*Provides romanization for Arabic.
+
+**21st stage (launched September 2010)**
+*Allows phonetic typing for Arabic, Greek, Hindi, Persian, Russian, Serbian and Urdu.
+*Latin[28]
+
+**22nd stage (launched December 2010)**
+*Romanization of Arabic removed.
+*Spell check added.
+*For some languages, Google replaced text-to-speech synthesizers from eSpeak's robot voice to native speaker's nature voice technologies made by SVOX[29] (Chinese, Czech, Danish, Dutch, Finnish, Greek, Hungarian, Norwegian, Polish, Portuguese, Russian, Swedish, Turkish). Also the old versions of French, German, Italian and Spanish. Latin uses the same synthesizer as Italian.
+*Speech program launched in Arabic, Japanese and Korean.
+
+**23rd stage (launched January 2011)**
+*Choice of different translations for a word.
+
+**24th stage (Launched June 2011)**
+*5 new Indic languages (in alpha) and a transliterated input method:[30]
+*Bengali
+*Gujarati
+*Kannada
+*Tamil
+*Telugu
+
+**25th stage (launched July 2011)**
+*Translation rating introduced.
+
+**26th stage (launched January 2012)**
+*Dutch male voice synthesizer replaced with female.
+*Elena by SVOX replaced the Slovak eSpeak voice.
+*Transliteration of Yiddish added.
+
+**27th stage (launched February 2012)**
+*Speech program launched in Thai.
+*Esperanto
+
+**28th stage (launched September 2012)**
+*Lao
+
+**29th stage (launched October 2012)**
+*Transliteration of Lao added. (Alpha status)[31][32]
+
+**30th stage (launched October 2012)**
+*New speech program launched in English.
+
+**31st stage (launched November 2012)**
+*New speech program in French, Spanish, Italian and German.
+
+**32nd stage (launched March 2013)**
+*Phrasebook added.
+
+**33rd stage (launched April 2013)**
+*Khmer
+
+**34th stage (launched May 2013)**
+*Bosnian
+*Cebuano
+*Hmong
+*Javanese
+*Marathi
+
+**35th stage (launched May 2013)**
+*16 additional languages can be used with camera-input: Bulgarian, Catalan, Danish, Estonian, Finnish, Croatian, Hungarian, Indonesian, Icelandic, Lithuanian, Latvian, Norwegian, Romanian, Slovak, Slovenian and Swedish.
+
+**36th stage (launched December 2013)**
+*Hausa
+*Igbo
+*Maori
+*Mongolian
+*Nepali
+*Punjabi
+*Somali
+*Yoruba
+*Zulu
+
+**37th stage (launched June 2014)**
+*Definition of words added.
+
+**38th stage (launched December 2014)**
+*Chichewa
+*Kazakh
+*Malagasy
+*Malayalam
+*Myanmar (Burmese)
+*Sesotho
+*Sinhala
+*Sundanese
+*Tajik
+*Uzbek
 
 = Languages not yet supported by Google Translate =
 Languages not yet supported by Google Translate, but in process.[33]

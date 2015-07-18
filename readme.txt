@@ -46,17 +46,73 @@ To configure the widget go to Settings -> GTranslate
 = It doesn't work, what to do? =
 Please check the [Troubleshooting](http://gtranslate.net/forum/troubleshooting-gtranslate-free-t370.html) and feel free to create a new topic if you cannot find your case.
 
+= Can I exclude some parts from being translated? =
+Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
+
+= What is GTranslate? =
+GTranslate is a multilingual solution for your website.
+
+* Multilingual solution makes your website available to the world
+* One click translation helps visitors to read your site in their native language
+* Free automatic translation translates your site instantly upon installation
+* Professional translation by a human being is available 24/7
+* Customizable layout lets you choose the suitable layout for your site
+* Analytics with Google provides insight into your audience and user activity
+
+[vimeo http://vimeo.com/30132555]
+
+= What is the quality of translation? =
+It's Google translation, hence Google quality. In the Pro and Enterprise versions you can refine the translations manually and order professional translations directly from your site.
+
+= Which languages are supported? =
+Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Khmer, Korean, Lao, Latin, Latvian, Lithuanian, Macedonian, Malay, Maltese, Maori, Marathi, Mongolian, Nepali, Norwegian, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Serbian, Slovak, Slovenian, Somali, Spanish, Swahili, Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish, Yoruba, Zulu
+
+= Which websites are supported? =
+All the HTML websites are supported. However the contents of media files like images and flash will not be translated.
+
 = Where I can see analytics data? =
 You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
 
-= What is the quality of translation? =
-It's a Google translation, hence Google quality.
+= What is a Translation Delivery Network? =
+Translation Delivery Network (TDN) aka Foreign Content Delivery Network (FCDN) is similar to Content Delivery Network (CDN) which is responsible for your static content delivery (images, videos, etc.). TDN will deliver your translations and make your site multilingual.
 
-= Which languages are supported? =
-Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Haitian Creole, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Korean, Latvian, Lithuanian, Macedonian, Malay, Maltese, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish
+It means that you don't need to install any software on your server and maintain it to make your website multilingual.
+
+[vimeo http://vimeo.com/38686858]
+
+= How Translation Delivery Network works? =
+You just need to change your DNS records to add sub-domains or domains dedicated to your languages to our Translation Delivery Network.
+
+So when someone visits the new added sub-domain it will show the translated clone of your website.
+
+After that you can just configure and place the GTranslate Free widget on your site to enable language selection.
+
+= What are the server requirements? =
+There are no server requirements! Your website can be written in any programming language and hosted on any web server.
+
+= What about updates? =
+Updates are done seamlessly. Since the translations are hosted on our server we take care about updates. You just use up to date service every day.
+
+= Can I test before making a payment? =
+You can test the free version.
+
+= Can I use it on SSL / HTTPS website? =
+Absolutely! By default we provide a self signed certificate, but if you want we can setup verified certificate purchased by you.
 
 = Can I exclude some parts from being translated? =
-Yes, you need to wrap the text you don't want to be translated with &lt;span class=&quot;notranslate&quot;&gt;&lt;/span&gt;.
+Yes, you need to wrap the text you don't want to be translated with &lt;span class="notranslate"&gt;&lt;/span&gt;. You can add class="nturl" to the "a" tag if you don't want the destination URL to contain the language code.
+
+= How it differs from the Pro version? =
+Pro version is a software hosted on your own server while Enterprise is a Translation Delivery Network which doesn't require software to be installed on your server.
+
+= How can I be sure that search engines will index my website? =
+You can check that this website is indexed in Google by searching for site:gtranslate.net.
+
+= Will it work with JoomFish, sh404sef or other SEF extensions? =
+Yes, there are no known extensions which have conflicts with Pro version.
+
+= How I can edit the translations or order professional human translations? =
+You need to go to the language you want to edit, for instance, French: http://domain.com/fr/ and add ?language_edit=1 to the end of the URL: http://domain.com/fr/?language_edit=1 and you will see the Edit and Add to Cart buttons near each text.
 
 == Screenshots ==
 

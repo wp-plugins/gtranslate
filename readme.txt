@@ -29,7 +29,7 @@ Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions
 **Watch GTranslate Tour**
 [vimeo http://vimeo.com/30132555]
 
-= Google Translate Wiki =
+***Google Translate Wiki***
 
 Google Translate is a multilingual service provided by Google to translate written text from one language into another. It supports 90 languages.
 
@@ -39,12 +39,13 @@ On May 26, 2011, Google announced that the Google Translate API for software dev
 
 The company stated in 2013 that it served 200 million people daily.
 
-= Features =
+**Features**
+
 Google Translate offers a web interface, mobile interfaces for Android and iOS, and an API that developers can use to build browser extensions, applications and other software. For some languages, Google Translate can pronounce translated text, highlight corresponding words and phrases in the source and target text, and act as a simple dictionary for single-word input. If "Detect language" is selected, text in an unknown language can be identified.
 
 In the web interface, users can suggest alternate translations, such as for technical terms, or correct mistakes. These suggestions are included in future updates to the translation process. If a user enters a URL in the source text, Google Translate will produce a hyperlink to a machine translation of the website. For some languages, text can be entered via an on-screen keyboard, handwriting recognition, or speech recognition. It is possible to enter searches in a source language that are first translated to a destination language allowing one to browse and interpret results from the selected destination language in the source language. In 2015 the application gained the ability to translate text in real time using the device's camera, as a result of Google's acquisition of the Word Lens app.
 
-**Browser integration**
+*Browser integration*
 
 Google Translate is available in some browsers as an extension which can translate.
 
@@ -52,7 +53,7 @@ A number of Firefox extensions exist for Google services, and likewise for Googl
 
 An extension for Google's Chrome browser also exists; in February 2010, Google Translate was integrated into the standard Google Chrome browser for automatic webpage translation.
 
-**Android version**
+*Android version*
 
 Google Translate is available as a free downloadable application for Android OS users. The first version was launched in January 2010. It works simply like the browser version. Google translation for Android contains two main options: "SMS translation" and "History".
 
@@ -64,11 +65,12 @@ The 'Camera input' functionality allows users to take a photograph of a document
 
 Latest version: 2.0.0 build 42.
 
-**iOS version**
+*iOS version*
 
 In August 2008, Google launched a Google Translate HTML5 web application for iOS for iPhone and iPod Touch users. The official iOS app for Google Translate was released February 8, 2011. It accepts voice input for 15 languages and allows translation of a word or phrase into one of more than 50 languages. Translations can be spoken out loud in 23 different languages.
 
-= Limitations =
+**Limitations**
+
 Google Translate, like other automatic translation tools, has its limitations. The service limits the number of paragraphs and the range of technical terms that can be translated, and while it can help the reader to understand the general content of a foreign language text, it does not always deliver accurate translations and most times, it tends to repeat verbatim the same word it's expected to translate. Grammatically, for example, Google Translate struggles to differentiate between imperfect and perfect tenses in Romance languages so habitual and continuous acts in the past often become single historical events. Although seemingly pedantic, this can often lead incorrect results (to a native speaker of for example French and Spanish) which would have been avoided by a human translator. Knowledge of the subjunctive mood is virtually non-existent. Moreover, the informal second person (tu) is often chosen, whatever the context or accepted usage. Since its English reference material contains only "you" forms, it is difficult to translate into a language which has more.
 
 Some languages produce better results than others. Google Translate performs well especially when English is the target language and the source language is from the European Union due to the prominence of translated EU parliament notes. A 2010 analysis indicated that French to English translation is relatively accurate, and 2011 and 2012 analyses showed that Italian to English translation is relatively accurate as well. However, if the source text is shorter, rule-based machine translations often perform better; this effect is particularly evident in Chinese to English translations. While edits of translations may be submitted, in Chinese specifically one is not able to edit sentences as a whole. Instead, one must edit sometimes arbitrary sets of characters, leading to incorrect edits.
@@ -77,20 +79,22 @@ Texts written in the Greek, Devanagari, Cyrillic and Arabic scripts can be trans
 
 Many of the more popular languages have a "text-to-speech" audio function that is able to read back a text in that language, up to a few dozen words or so. In the case of pluricentric languages, the accent depends on the region: for English, in the Americas, most of the Asia-Pacific and West Asia the audio uses a female General American accent, whereas in Europe, Hong Kong, Malaysia, Singapore, Guyana and all other parts of the world a female British English accent is used, except for a special Oceania accent used in Australia, New Zealand and Norfolk lsland; for Spanish, in the Americas a Latin American Spanish accent is used, while in the other parts of the world a Castilian Spanish accent is used; Portuguese uses a Sao Paulo accent in the world, except for Portugal, where their native accent is used. Some less widely spoken languages use the open-source eSpeak synthesizer for their speech; producing a robotic, awkward voice that may be difficult to understand.
 
-= Translation methodology =
+**Translation methodology**
+
 Google Translate does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis. The system's original creator, Franz Josef Och, has criticized the effectiveness of rule-based algorithms in favor of statistical approaches. It is based on a method called statistical machine translation, and more specifically, on research by Och who won the DARPA contest for speed machine translation in 2003. Och was the head of Google's machine translation group until leaving to join Human Longevity, Inc. in July 2014.
 
-Google Translate does not translate from one language to another (L1 -> L2). Instead, it often translates first to English and then to the target language (L1 -> EN -> L2). However, because English, like all human languages, is ambiguous and depends on context, this can cause translation errors.
+Google Translate does not translate from one language to another (L1 -&gt; L2). Instead, it often translates first to English and then to the target language (L1 -&gt; EN -&gt; L2). However, because English, like all human languages, is ambiguous and depends on context, this can cause translation errors.
 
-The following languages do not have a direct Google translation to or from English. These languages are translated through the indicated intermediate language (which in all cases is closely related to the desired language but more widely spoken) in addition to through English:[citation needed]
+The following languages do not have a direct Google translation to or from English. These languages are translated through the indicated intermediate language (which in all cases is closely related to the desired language but more widely spoken) in addition to through English:
 
-Belarusian (be <-> ru <-> en <-> other);
-Catalan (ca <-> es <-> en <-> other);
-Galician (gl <-> pt <-> en <-> other);
-Haitian Creole (ht <-> fr <-> en <-> other);
-Slovak (sk <-> cs <-> en <-> other);
-Ukrainian (uk <-> ru <-> en <-> other);
-Urdu (ur <-> hi <-> en <-> other).
+* Belarusian (be &lt;-&gt; ru &lt;-&gt; en &lt;-&gt; other);
+* Catalan (ca &lt;-&gt; es &lt;-&gt; en &lt;-&gt; other);
+* Galician (gl &lt;-&gt; pt &lt;-&gt; en &lt;-&gt; other);
+* Haitian Creole (ht &lt;-&gt; fr &lt;-&gt; en &lt;-&gt; other);
+* Slovak (sk &lt;-&gt; cs &lt;-&gt; en &lt;-&gt; other);
+* Ukrainian (uk &lt;-&gt; ru &lt;-&gt; en &lt;-&gt; other);
+* Urdu (ur &lt;-&gt; hi &lt;-&gt; en &lt;-&gt; other).
+
 According to Och, a solid base for developing a usable statistical machine translation system for a new pair of languages from scratch would consist of a bilingual text corpus (or parallel collection) of more than 150-200 million words, and two monolingual corpora each of more than a billion words. Statistical models from these data are then used to translate between those languages.
 
 To acquire this huge amount of linguistic data, Google used United Nations documents. The UN typically publishes documents in all six official UN languages, which has produced a very large 6-language corpus.
@@ -99,11 +103,11 @@ Google representatives have been involved with domestic conferences in Japan whe
 
 When Google Translate generates a translation, it looks for patterns in hundreds of millions of documents to help decide on the best translation. By detecting patterns in documents that have already been translated by human translators, Google Translate makes intelligent guesses (AI) as to what an appropriate translation should be.
 
-= Reviews =
-Shortly after launching the translation service, Google won an international competition for English <-> Arabic and English <-> Chinese machine translation.
+**Reviews**
+
+Shortly after launching the translation service, Google won an international competition for English &lt;-&gt; Arabic and English &lt;-&gt; Chinese machine translation.
 
 **Translation mistakes and oddities**
-
 Since Google Translate uses statistical matching to translate, translated text can often include apparently nonsensical and obvious errors, often swapping common terms for similar but nonequivalent common terms in the other language, as well as inverting sentence meaning.[citation needed] Also, for the speech, it uses only European French as well as Latin American Spanish worldwide, but both Portugal and Brazilian Portuguese (European for translate.google.pt and Brazilian for all other Google Translate sites).
 
 == Installation ==
@@ -403,7 +407,7 @@ Here is the list: Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Be
 All the HTML websites are supported. However the contents of media files like images and flash will not be translated.
 
 = Where I can see analytics data? =
-You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
+You need to login to your Google Analytics account -&gt; Content -&gt; Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
 
 = What is a Translation Delivery Network? =
 Translation Delivery Network (TDN) aka Foreign Content Delivery Network (FCDN) is similar to Content Delivery Network (CDN) which is responsible for your static content delivery (images, videos, etc.). TDN will deliver your translations and make your site multilingual.
